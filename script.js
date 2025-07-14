@@ -77,9 +77,15 @@ particlesJS('particles-js', {
         value: ["#DC143C", "#FFD700", "#808080"] // Rojo (pétalo), Dorado (chispa), Gris (ceniza)
       },
       shape: {
-        type: "circle", // Círculos para simular pétalos/cenizas
+        type: "char", // Usar caracteres como forma
         stroke: { width: 0, color: "#000000" },
-        polygon: { nb_sides: 5 }
+        polygon: { nb_sides: 5 },
+        character: {
+          value: "▚▞▙▟▰▱▲▼◆◇◈◉◎●◦", // Caracteres que evocan formas rúnicas/abstractas
+          font: "Verdana", // Una fuente común que soporte estos caracteres
+          style: "",
+          weight: "400"
+        }
       },
       opacity: {
         value: 0.7, // Opacidad inicial más alta
