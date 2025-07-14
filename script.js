@@ -6,10 +6,14 @@ const backgroundMusic = new Audio('BackgroundMusic.mp3');
 backgroundMusic.loop = true; // La música de fondo se reproduce en bucle
 backgroundMusic.volume = 0.3; // Ajustar el volumen de la música de fondo
 
+let isAudioEnabled = true; // Estado inicial del audio
+
 // Función para reproducir un sonido
 function playSound(sound) {
-  sound.currentTime = 0; // Reiniciar el sonido si ya se está reproduciendo
-  sound.play();
+  if (isAudioEnabled) {
+    sound.currentTime = 0; // Reiniciar el sonido si ya se está reproduciendo
+    sound.play();
+  }
 }
 
 // Añadir eventos de sonido a enlaces y botones
@@ -17,6 +21,25 @@ document.querySelectorAll('a, button').forEach(element => {
   element.addEventListener('mouseover', () => playSound(hoverSound));
   element.addEventListener('click', () => playSound(clickSound));
 });
+
+// Control de Audio
+const audioToggle = document.getElementById('audio-toggle');
+
+if (audioToggle) {
+  audioToggle.addEventListener('click', () => {
+    isAudioEnabled = !isAudioEnabled; // Alternar el estado del audio
+    if (isAudioEnabled) {
+      audioToggle.textContent = "🔊"; // Icono de altavoz activado
+      // Si la música de fondo estaba reproduciéndose en modo oscuro, reanudarla
+      if (!document.body.classList.contains('light-mode')) {
+        backgroundMusic.play();
+      }
+    } else {
+      audioToggle.textContent = "🔇"; // Icono de altavoz silenciado
+      backgroundMusic.pause(); // Pausar la música de fondo
+    }
+  });
+}
 
 // Toggle modo claro / oscuro
 const themeToggle = document.getElementById('theme-toggle');
@@ -26,13 +49,15 @@ if (themeToggle) {
     document.body.classList.toggle('light-mode');
 
     if (document.body.classList.contains('light-mode')) {
-      themeToggle.textContent = "🌞";
+      themeToggle.innerHTML = "<i class=\"fas fa-fire-extinguisher\"></i>"; // Icono de extintor para modo día
       backgroundMusic.pause(); // Pausar la música en modo claro
       backgroundMusic.currentTime = 0; // Reiniciar la música
     } else {
-      themeToggle.textContent = "🌙";
-      playSound(bonfireSound); // Sonido de hoguera al activar modo oscuro
-      backgroundMusic.play(); // Reproducir música en modo oscuro
+      themeToggle.innerHTML = "<i class=\"fas fa-fire\"></i>"; // Icono de fuego para modo noche
+      if (isAudioEnabled) { // Solo reproducir si el audio está activado
+        playSound(bonfireSound); // Sonido de hoguera al activar modo oscuro
+        backgroundMusic.play(); // Reproducir música en modo oscuro
+      }
     }
   });
 }
