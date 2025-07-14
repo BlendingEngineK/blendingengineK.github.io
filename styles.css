@@ -1010,3 +1010,89 @@ body.light-mode #certificaciones {
 .container {
   display: block; /* Cambia de flex a block si es necesario */
 }
+
+/* Animaciones de sección */
+section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto Glitch */
+.glitch-effect {
+  position: relative;
+  display: inline-block; /* Para que el glitch no ocupe todo el ancho */
+  overflow: hidden; /* Para ocultar el desbordamiento del glitch */
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text); /* Usar el texto original del elemento */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark);
+  overflow: hidden;
+  color: var(--accent-red);
+}
+
+.glitch-effect::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent-red);
+  animation: glitch-anim-1 2s infinite alternate-reverse;
+}
+
+.glitch-effect::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--accent-gold);
+  animation: glitch-anim-2 2s infinite alternate-reverse;
+}
+
+/* Animación para la foto de perfil */
+.photo.glitch-effect img {
+  animation: glitch-img 2s infinite alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(10px, 9999px, 10px, 0); transform: skew(0.5deg); }
+  10% { clip: rect(50px, 9999px, 50px, 0); transform: skew(0.2deg); }
+  20% { clip: rect(20px, 9999px, 20px, 0); transform: skew(0.8deg); }
+  30% { clip: rect(70px, 9999px, 70px, 0); transform: skew(0.1deg); }
+  40% { clip: rect(40px, 9999px, 40px, 0); transform: skew(0.6deg); }
+  50% { clip: rect(90px, 9999px, 90px, 0); transform: skew(0.3deg); }
+  60% { clip: rect(60px, 9999px, 60px, 0); transform: skew(0.9deg); }
+  70% { clip: rect(30px, 9999px, 30px, 0); transform: skew(0.4deg); }
+  80% { clip: rect(80px, 9999px, 80px, 0); transform: skew(0.7deg); }
+  90% { clip: rect(0px, 9999px, 0px, 0); transform: skew(0.0deg); }
+  100% { clip: rect(100px, 9999px, 100px, 0); transform: skew(0.5deg); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(100px, 9999px, 100px, 0); transform: skew(0.5deg); }
+  10% { clip: rect(0px, 9999px, 0px, 0); transform: skew(0.2deg); }
+  20% { clip: rect(80px, 9999px, 80px, 0); transform: skew(0.8deg); }
+  30% { clip: rect(30px, 9999px, 30px, 0); transform: skew(0.1deg); }
+  40% { clip: rect(60px, 9999px, 60px, 0); transform: skew(0.6deg); }
+  50% { clip: rect(90px, 9999px, 90px, 0); transform: skew(0.3deg); }
+  60% { clip: rect(40px, 9999px, 40px, 0); transform: skew(0.9deg); }
+  70% { clip: rect(70px, 9999px, 70px, 0); transform: skew(0.4deg); }
+  80% { clip: rect(20px, 9999px, 20px, 0); transform: skew(0.7deg); }
+  90% { clip: rect(50px, 9999px, 50px, 0); transform: skew(0.0deg); }
+  100% { clip: rect(10px, 9999px, 10px, 0); transform: skew(0.5deg); }
+}
+
+@keyframes glitch-img {
+  0% { filter: hue-rotate(0deg) saturate(1) brightness(1); transform: translate(0, 0); }
+  20% { filter: hue-rotate(10deg) saturate(1.2) brightness(0.9); transform: translate(2px, -2px); }
+  40% { filter: hue-rotate(0deg) saturate(1) brightness(1); transform: translate(-2px, 2px); }
+  60% { filter: hue-rotate(5deg) saturate(1.1) brightness(0.8); transform: translate(1px, 1px); }
+  80% { filter: hue-rotate(0deg) saturate(1) brightness(1); transform: translate(-1px, -1px); }
+  100% { filter: hue-rotate(15deg) saturate(1.3) brightness(0.7); transform: translate(3px, -3px); }
+}

@@ -107,3 +107,45 @@ const navLinks = document.getElementById('nav-links');
 menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('show');
 });
+
+// Observador para animaciones de sección
+const sections = document.querySelectorAll('section');
+
+const observerOptions = {
+  root: null, // El viewport
+  rootMargin: '0px',
+  threshold: 0.1 // Cuando el 10% de la sección es visible
+};
+
+const sectionObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      // Opcional: para que desaparezca al salir de pantalla
+      // entry.target.classList.remove('visible');
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  sectionObserver.observe(section);
+});
+
+// Efecto Glitch en Hover
+const glitchElements = document.querySelectorAll('.photo, h1, h2, a');
+
+glichElements.forEach(element => {
+  // Para elementos de texto, guarda el texto original en un atributo data-text
+  if (element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'A') {
+    element.setAttribute('data-text', element.textContent);
+  }
+
+  element.addEventListener('mouseover', () => {
+    element.classList.add('glitch-effect');
+  });
+
+  element.addEventListener('mouseout', () => {
+    element.classList.remove('glitch-effect');
+  });
+});
