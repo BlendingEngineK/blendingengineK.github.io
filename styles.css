@@ -1,3 +1,24 @@
+:root {
+  --bg-dark: #1a1a1a; /* Negro muy oscuro */
+  --bg-dark-header: #222222; /* Gris oscuro para encabezados y secciones */
+  --bg-dark-hover: #333333; /* Gris más claro para hover */
+  --bg-dark-hover-alt: #444444; /* Otro gris para hover */
+  --text-light: #ffffff; /* Blanco para texto principal */
+  --text-light-alt: #dddddd; /* Blanco ligeramente más oscuro para texto secundario */
+  --accent-gold: #FFD700; /* Dorado */
+  --accent-red: #DC143C; /* Rojo Carmesí */
+  --border-dark: #333333; /* Borde oscuro */
+
+  /* Colores para el modo claro */
+  --bg-light: #f0f0f0; /* Fondo claro */
+  --bg-light-header: #e0e0e0; /* Gris claro para encabezados y secciones */
+  --text-dark: #000000; /* Negro para texto principal en modo claro */
+  --accent-blue-light: #0000ee; /* Azul para enlaces en modo claro (original) */
+  --bg-light-gradient-start: #87CEEB; /* Azul cielo para gradiente */
+  --bg-light-gradient-end: #ffffff; /* Blanco para gradiente */
+  --border-light: #cccccc; /* Borde claro */
+}
+
 /* Reset básico */
 * {
     margin: 0;
@@ -7,8 +28,8 @@
   
   body {
     font-family: 'Poppins', sans-serif;
-    background: #0f0f1a;
-    color: #ffffff;
+    background: var(--bg-dark);
+    color: var(--text-light);
     line-height: 1.6;
   }
   
@@ -17,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1a1a2e;
+    background: var(--bg-dark-header);
     padding: 15px 40px;
     position: fixed;
     width: 100%;
@@ -28,17 +49,18 @@
   .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--accent-gold);
   }
   
   nav a {
-    color: #ffffff;
+    color: var(--text-light);
     margin-left: 20px;
     text-decoration: none;
     font-weight: 500;
   }
   
   nav a:hover {
-    color: #ff9f1c;
+    color: var(--accent-gold);
   }
   
   /* Hero section */
@@ -62,7 +84,7 @@
   .info h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #ff9f1c;
+    color: var(--accent-gold);
   }
   
   .info ul {
@@ -100,7 +122,7 @@
     aspect-ratio: 1; /* Asegura que el contenedor siempre tenga una relación de aspecto 1:1 (cuadrado) */
     border-radius: 50%; /* Hace que el contenedor sea un círculo */
     overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-    border: 4px solid #ff9f1c; /* Borde alrededor de la imagen */
+    border: 4px solid var(--accent-gold);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,11 +152,11 @@
   
   /* Botón Animado */
   .animated-button {
-    background: linear-gradient(45deg, #ff9f1c, #ff1654);
+    background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
     border: none;
     padding: 12px 24px;
     border-radius: 30px;
-    color: #fff;
+    color: var(--text-light);
     font-size: 1rem;
     cursor: pointer;
     transition: 0.4s ease;
@@ -142,20 +164,20 @@
   
   .animated-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px #ff9f1c;
+    box-shadow: 0 0 15px var(--accent-gold);
   }
   
   /* Secciones */
   section {
     padding: 80px 40px;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--border-dark);
   }
   
   /* Estilo para los títulos de las secciones */
 section h2 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: var(--text-light);
   position: relative;
   text-transform: uppercase;  /* Convertir el texto a mayúsculas */
   font-weight: 600;
@@ -170,7 +192,7 @@ section h2::after {
   bottom: -10px;
   width: 100%;
   height: 2px;
-  background: linear-gradient(45deg, #ff9f1c, #ff1654);  /* Línea decorativa con gradiente */
+  background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
@@ -184,14 +206,14 @@ section h2:hover::after {
 
 /* Estilo para los enlaces dentro de cada sección */
 section a {
-  color: #ff9f1c;
+  color: var(--accent-gold);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 section a:hover {
-  color: #ffffff;
+  color: var(--text-light);
   text-decoration: underline;
 }
 
@@ -222,7 +244,7 @@ header .header-background {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(26, 26, 46, 0.7);
+  background: rgba(34, 34, 34, 0.7);
   z-index: 1;
   transition: backdrop-filter 0.3s ease;
 }
@@ -259,12 +281,12 @@ header .logo, nav a {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 /* Estilo para los enlaces del nav */
 nav a {
-  color: #ffffff; /* Color blanco por defecto */
+  color: var(--text-light);
   margin-left: 20px;
   text-decoration: none;
   font-weight: 500;
@@ -275,18 +297,18 @@ nav a {
 
 /* Enlaces interactivos */
 nav a:hover {
-  color: #ff9f1c; /* Color de hover */
+  color: var(--accent-gold);
 }
 
 /* Estilo de los enlaces (como el email, LinkedIn, GitHub) */
 .info a {
-  color: #ffffff; /* Asegura que los enlaces tengan color blanco por defecto */
+  color: var(--text-light);
   text-decoration: none;
   z-index: 3; /* Asegura que los enlaces sean interactivos */
 }
 
 .info a:hover {
-  color: #ff9f1c; /* Color de hover para los enlaces */
+  color: var(--accent-gold);
 }
 
 /* Animación de hover para los enlaces del nav */
@@ -297,7 +319,7 @@ nav a::after {
   left: 0;
   width: 100%;
   height: 2px;
-  background: #ff9f1c;
+  background: var(--accent-gold);
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
@@ -317,16 +339,16 @@ header .logo, nav a, .info a {
 
 /* Estilo para el modo claro */
 body.light-mode {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 body.light-mode header {
-  background-color: #f0f0f0;
+  background-color: var(--bg-light-header);
 }
 
 body.light-mode nav a {
-  color: #0000ee; /* Cambiar el color de los enlaces en el modo claro */
+  color: var(--accent-blue-light);
 }
 
 /* Fondo con partículas solo en modo oscuro */
@@ -337,8 +359,8 @@ body.light-mode #particles-js {
 
 /* Fondo oscuro del body */
 body {
-  background-color: #0f0f1a;
-  color: #ffffff;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
 
 body.light-mode #particles-js {
@@ -352,7 +374,7 @@ section {
 
 /* Header en modo oscuro */
 header {
-  background: #1a1a2e;
+  background: var(--bg-dark-header);
 }
 
  
@@ -367,7 +389,7 @@ header {
   border: none;
   font-size: 1.4rem;
   cursor: pointer;
-  color: white;
+  color: var(--text-light);
   transition: transform 0.3s ease;
 }
 
@@ -377,14 +399,14 @@ header {
   
   /* Tema oscuro (por defecto) */
   body {
-    background-color: #0f0f1a;
-    color: #ffffff;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
   }
   
   /* Tema claro */
   body.light-mode {
-    background: linear-gradient(to top, #87CEEB, #ffffff); /* Degradado de azul claro a blanco */
-    color: #000000;
+    background: linear-gradient(to top, var(--bg-light-gradient-start), var(--bg-light-gradient-end));
+    color: var(--text-dark);
   }
   
   body.light-mode #particles-js {
@@ -393,16 +415,16 @@ header {
   }
 
   body.light-mode header {
-    background: #f0f0f0;
+    background: var(--bg-light-header);
   }
   
   body.light-mode #particles-js {
-    background-color: #ffffff;
+    background-color: var(--bg-light);
   }
   
   /* Links también cambian en claro */
   body.light-mode a {
-    color: #0000ee;
+    color: var(--accent-blue-light);
   }
   
   body.light-mode #particles-js {
@@ -419,7 +441,7 @@ header {
   }
   
   .photo:hover {
-    transform: scale(1.1); /* Aumentamos el tamaño del círculo al pasar el cursor */
+    transform: scale(1.1);
   }
   
   .photo img {
@@ -431,7 +453,7 @@ header {
 
   #sobre-mi {
     padding: 80px 40px;
-    background: linear-gradient(135deg, rgba(255, 159, 28, 0.1), rgba(255, 22, 84, 0.1)); /* Fondo suave y colorido */
+    background: var(--bg-dark-header); /* Usar variable */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin: 40px 0; /* Espacio alrededor */
@@ -439,37 +461,37 @@ header {
   
   #sobre-mi h2 {
     font-size: 2rem;
-    color: #ff9f1c;
+    color: var(--accent-gold);
     margin-bottom: 20px;
   }
   
   #sobre-mi p {
     font-size: 1.2rem;
-    color: #ddd;
+    color: var(--text-light-alt);
     line-height: 1.8;
     text-align: justify;
   }
   
   /* Estilos para el modo claro */
 body.light-mode #sobre-mi {
-    background: linear-gradient(135deg, rgba(25, 39, 53, 0.1), rgba(0, 19, 45, 0.1)); /* Fondo azul oscuro en modo claro */
+    background: var(--bg-light-header); /* Usar variable */
   }
   
   body.light-mode #sobre-mi h2 {
-    color: #ff9f1c; /* Mantener el color naranja del título */
+    color: var(--accent-gold); /* Mantener el color naranja del título */
   }
   
   body.light-mode #sobre-mi p {
-    color: #000; /* Texto negro en modo claro */
+    color: var(--text-dark); /* Texto negro en modo claro */
   }
   
   /* Estilo del botón de Descargar CV */
 #download-cv {
-  background: linear-gradient(45deg, #ff9f1c, #ff1654);
+  background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
   border: none;
   padding: 12px 24px;
   border-radius: 30px;
-  color: #fff;
+  color: var(--text-light);
   font-size: 1rem;
   cursor: pointer;
   transition: 0.4s ease;
@@ -480,7 +502,7 @@ body.light-mode #sobre-mi {
 /* Efecto de hover para el botón */
 #download-cv:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #ff9f1c;
+  box-shadow: 0 0 15px var(--accent-gold);
 }
 
 /* Asegura que el botón sea visible y esté interactivo */
@@ -491,19 +513,19 @@ body.light-mode #sobre-mi {
 /* Estilo para la sección de experiencia laboral */
 #experiencia {
   padding: 80px 40px;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--border-dark);
 }
 
 #experiencia h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 .experiencia {
   margin-bottom: 40px;
   padding: 20px;
-  background: rgba(26, 26, 46, 0.7); /* Fondo semitransparente */
+  background: var(--bg-dark-header);
   border-radius: 8px;
 }
 
@@ -513,14 +535,14 @@ body.light-mode #sobre-mi {
 
 .experiencia h3 {
   font-size: 1.8rem;
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 10px;
 }
 
 .experiencia p {
   font-size: 1rem;
   margin-bottom: 5px;
-  color: #fff;
+  color: var(--text-light);
 }
 
 .responsabilidades {
@@ -531,7 +553,7 @@ body.light-mode #sobre-mi {
 .responsabilidades li {
   margin-bottom: 10px;
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-light);
 }
 
 /* Estilo para la sección de educación */
@@ -539,19 +561,19 @@ body.light-mode #sobre-mi {
   position: relative;
   z-index: 2; /* Asegura que los enlaces sean clicables */
   padding: 80px 40px;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--border-dark);
 }
 
 #educacion h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 .educacion {
   margin-bottom: 40px;
   padding: 20px;
-  background: rgba(26, 26, 46, 0.7); /* Fondo semitransparente */
+  background: var(--bg-dark-header);
   border-radius: 8px;
 }
 
@@ -561,63 +583,63 @@ body.light-mode #sobre-mi {
 
 .educacion h3 {
   font-size: 1.8rem;
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 10px;
 }
 
 .educacion p {
   font-size: 1rem;
   margin-bottom: 5px;
-  color: #fff;
+  color: var(--text-light);
 }
 
 /* Aseguramos que los enlaces en la sección de educación sean interactivos */
 /* Enlaces en modo oscuro (deben ser blancos) */
 #educacion a {
-  color: #ffffff; /* Color blanco para los enlaces en modo oscuro */
+  color: var(--text-light);
   text-decoration: none; /* Eliminar subrayado */
   transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave */
 }
 
 /* Hover en modo oscuro */
 #educacion a:hover {
-  color: #ff9f1c; /* Color naranja cuando se pasa el cursor */
+  color: var(--accent-gold);
   text-decoration: underline; /* Subrayado cuando se pasa el cursor */
 }
 
 /* Enlaces en modo claro (azul, como ya teníamos) */
 body.light-mode #educacion a {
-  color: #0000ee; /* Color azul para los enlaces en modo claro */
+  color: var(--accent-blue-light);
 }
 
 body.light-mode #educacion a:hover {
-  color: #ff9f1c; /* Color naranja para el hover */
+  color: var(--accent-gold);
   text-decoration: underline; /* Subrayado */
 }
 
 /* Fondo para la sección de educación en modo oscuro */
 body.dark-mode #educacion {
-  background-color: #1a1a2e; /* Fondo oscuro para la sección */
+  background-color: var(--bg-dark-header);
 }
 
 /* Fondo para la sección de educación en modo claro */
 body.light-mode #educacion {
-  background-color: #f0f0f0; /* Fondo claro para la sección */
+  background-color: var(--bg-light-header);
 }
 
 /* Enlaces en modo claro (azul, como ya teníamos) */
 body.light-mode #habilidades a {
-  color: #0000ee; /* Color azul para los enlaces en modo claro */
+  color: var(--accent-blue-light);
 }
 
 body.light-mode #habilidades a:hover {
-  color: #ff9f1c; /* Color naranja para el hover */
+  color: var(--accent-gold);
   text-decoration: underline; /* Subrayado */
 }
 
 /* Fondo para la sección de educación en modo oscuro */
 body.dark-mode #habilidades {
-  background-color: #1a1a2e; /* Fondo oscuro para la sección */
+  background-color: var(--bg-dark-header);
 }
 
 
@@ -625,7 +647,7 @@ body.dark-mode #habilidades {
 .educacion h4 {
   font-size: 1.3rem;
   margin-top: 20px;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 .conocimientos {
@@ -636,21 +658,21 @@ body.dark-mode #habilidades {
 .conocimientos li {
   margin-bottom: 10px;
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-light);
 }
 
 
 /* Sección de Idiomas */
 /* Sección de Idiomas */
 #idiomas {
-  background-color: #1a1a2e; /* Por defecto, modo oscuro */
+  background-color: var(--bg-dark-header);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #idiomas h2 {
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 20px;
   font-size: 2rem;
 }
@@ -661,54 +683,54 @@ body.dark-mode #habilidades {
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  background-color: #1a1a2e;
-  border-bottom: 1px solid #333;
+  background-color: var(--bg-dark-header);
+  border-bottom: 1px solid var(--border-dark);
   border-radius: 4px;
 }
 
 .idioma {
   font-size: 1.2rem;
-  color: #ffffff;
+  color: var(--text-light);
 }
 
 .nivel {
   font-size: 1.2rem;
-  color: #ff9f1c;
+  color: var(--accent-gold);
   font-weight: bold;
 }
 
 /* Hover (ambos modos) */
 .idioma-item:hover {
-  background-color: #333;
+  background-color: var(--bg-dark-hover);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .idioma-item:hover .nivel {
-  color: #ffffff;
+  color: var(--text-light);
 }
 
 /* Modo claro: fondo exterior claro, items oscuros */
 body.light-mode #idiomas {
-  background-color: #f0f0f0; /* Fondo claro exterior */
+  background-color: var(--bg-light-header);
 }
 
 body.light-mode .idioma-item {
-  background-color: #1a1a2e; /* Fondo oscuro para los items */
-  border-bottom: 1px solid #ccc;
+  background-color: var(--bg-dark-header);
+  border-bottom: 1px solid var(--border-light);
 }
 
 body.light-mode .idioma {
-  color: #ffffff;
+  color: var(--text-light);
 }
 
 body.light-mode .nivel {
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 /* Estilos para la sección de competencias digitales */
 #habilidades {
-  background-color: #1a1a2e;
+  background-color: var(--bg-dark-header);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -716,22 +738,22 @@ body.light-mode .nivel {
 }
 
 #habilidades h2 {
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 30px;
   font-size: 2rem;
 }
 
 /* Fondo para la sección de educación en modo claro */
 body.light-mode #habilidades {
-  background-color: #f0f0f0; /* Fondo claro para la sección */
+  background-color: var(--bg-light-header);
 }
 
 body.light-mode #proyectos {
-  background-color: #f0f0f0; /* Fondo claro para la sección */
+  background-color: var(--bg-light-header);
 }
 
 body.light-mode #certificaciones {
-  background-color: #f0f0f0; /* Fondo claro para la sección */
+  background-color: var(--bg-light-header);
 }
 
 .habilidades-container {
@@ -742,8 +764,8 @@ body.light-mode #certificaciones {
 }
 
 .burbujita {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--bg-dark-hover);
+  color: var(--text-light);
   padding: 12px 20px;
   border-radius: 20px;
   font-size: 1rem;
@@ -756,7 +778,7 @@ body.light-mode #certificaciones {
 
 .burbujita:hover {
   transform: scale(1.1);
-  background-color: #ff9f1c;
+  background-color: var(--accent-gold);
   cursor: pointer;
 }
 
@@ -769,7 +791,7 @@ body.light-mode #certificaciones {
 
 /* Estilos para la sección de proyectos */
 #proyectos {
-  background-color: #1a1a2e;
+  background-color: var(--bg-dark-header);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -779,7 +801,7 @@ body.light-mode #certificaciones {
 }
 
 #proyectos h2 {
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 30px;
   font-size: 2rem;
 }
@@ -792,8 +814,8 @@ body.light-mode #certificaciones {
 }
 
 .proyecto {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--bg-dark-hover);
+  color: var(--text-light);
   border-radius: 8px;
   padding: 20px;
   max-width: 300px;
@@ -805,18 +827,18 @@ body.light-mode #certificaciones {
 .proyecto h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 .proyecto p {
   font-size: 1rem;
   margin-bottom: 20px;
-  color: #ddd;
+  color: var(--text-light-alt);
 }
 
 .proyecto-link {
-  background-color: #ff9f1c;
-  color: #fff;
+  background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
+  color: var(--text-light);
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 30px;
@@ -825,12 +847,12 @@ body.light-mode #certificaciones {
 }
 
 .proyecto-link:hover {
-  background-color: #ff1654;
+  background-color: var(--accent-red);
 }
 
 .proyecto:hover {
   transform: translateY(-10px);
-  background-color: #444;
+  background-color: var(--bg-dark-hover-alt);
 }
 
 @media (max-width: 768px) {
@@ -841,7 +863,7 @@ body.light-mode #certificaciones {
 
 /* Estilos para la sección de certificaciones */
 #certificaciones {
-  background-color: #1a1a2e;
+  background-color: var(--bg-dark-header);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -851,7 +873,7 @@ body.light-mode #certificaciones {
 }
 
 #certificaciones h2 {
-  color: #ff9f1c;
+  color: var(--accent-gold);
   margin-bottom: 30px;
   font-size: 2rem;
 }
@@ -864,8 +886,8 @@ body.light-mode #certificaciones {
 }
 
 .certificacion {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--bg-dark-hover);
+  color: var(--text-light);
   border-radius: 8px;
   padding: 20px;
   max-width: 300px;
@@ -877,18 +899,18 @@ body.light-mode #certificaciones {
 .certificacion h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #ff9f1c;
+  color: var(--accent-gold);
 }
 
 .certificacion p {
   font-size: 1rem;
   margin-bottom: 15px;
-  color: #ddd;
+  color: var(--text-light-alt);
 }
 
 .certificacion-link {
-  background-color: #ff9f1c;
-  color: #fff;
+  background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
+  color: var(--text-light);
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 30px;
@@ -897,12 +919,12 @@ body.light-mode #certificaciones {
 }
 
 .certificacion-link:hover {
-  background-color: #ff1654;
+  background-color: var(--accent-red);
 }
 
 .certificacion:hover {
   transform: translateY(-10px);
-  background-color: #444;
+  background-color: var(--bg-dark-hover-alt);
 }
 
 @media (max-width: 768px) {
@@ -912,7 +934,7 @@ body.light-mode #certificaciones {
 }
 
 .navbar {
-  background-color: #141322;
+  background-color: var(--bg-dark-header);
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -927,17 +949,16 @@ body.light-mode #certificaciones {
 }
 
 .logo {
-  color: #ffa500;
+  color: var(--accent-gold);
   font-weight: bold;
   font-size: 1.3rem;
 }
 
 .menu-toggle {
-  display: none;
   background: none;
   border: none;
   font-size: 1.8rem;
-  color: white;
+  color: var(--text-light);
   cursor: pointer;
 }
 
@@ -949,7 +970,7 @@ body.light-mode #certificaciones {
 }
 
 .nav-links a, .nav-links button {
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
   font-weight: 500;
   padding: 6px 10px;
