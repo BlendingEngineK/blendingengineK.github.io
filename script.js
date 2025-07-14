@@ -1,7 +1,22 @@
-document.getElementById('download-cv').addEventListener('click', function() {
-    window.open('cv.pdf', '_blank');
-  });
+// Cargar los sonidos
+const hoverSound = new Audio('Whoosh.flac');
+const clickSound = new Audio('thud.wav');
+const bonfireSound = new Audio('Hoguera.wav');
+const backgroundMusic = new Audio('BackgroundMusic.mp3');
+backgroundMusic.loop = true; // La música de fondo se reproduce en bucle
+backgroundMusic.volume = 0.3; // Ajustar el volumen de la música de fondo
 
+// Función para reproducir un sonido
+function playSound(sound) {
+  sound.currentTime = 0; // Reiniciar el sonido si ya se está reproduciendo
+  sound.play();
+}
+
+// Añadir eventos de sonido a enlaces y botones
+document.querySelectorAll('a, button').forEach(element => {
+  element.addEventListener('mouseover', () => playSound(hoverSound));
+  element.addEventListener('click', () => playSound(clickSound));
+});
 
 // Toggle modo claro / oscuro
 const themeToggle = document.getElementById('theme-toggle');
@@ -12,9 +27,12 @@ if (themeToggle) {
 
     if (document.body.classList.contains('light-mode')) {
       themeToggle.textContent = "🌞";
-      if (typeof checkThemeAndToggleClouds === 'function') checkThemeAndToggleClouds();
+      backgroundMusic.pause(); // Pausar la música en modo claro
+      backgroundMusic.currentTime = 0; // Reiniciar la música
     } else {
       themeToggle.textContent = "🌙";
+      playSound(bonfireSound); // Sonido de hoguera al activar modo oscuro
+      backgroundMusic.play(); // Reproducir música en modo oscuro
     }
   });
 }
@@ -89,4 +107,3 @@ const navLinks = document.getElementById('nav-links');
 menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('show');
 });
-  
