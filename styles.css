@@ -10,13 +10,13 @@
   --border-dark: #333333; /* Borde oscuro */
 
   /* Colores para el modo claro */
-  --bg-light: #f0f0f0; /* Fondo claro */
-  --bg-light-header: #e0e0e0; /* Gris claro para encabezados y secciones */
-  --text-dark: #000000; /* Negro para texto principal en modo claro */
-  --accent-blue-light: #0000ee; /* Azul para enlaces en modo claro (original) */
-  --bg-light-gradient-start: #87CEEB; /* Azul cielo para gradiente */
-  --bg-light-gradient-end: #ffffff; /* Blanco para gradiente */
-  --border-light: #cccccc; /* Borde claro */
+  --bg-light: #F8F8F8; /* Very light, slightly warm off-white */
+  --bg-light-header: #EFEFEF; /* Slightly darker, neutral light grey */
+  --text-dark: #222222; /* Soft black for main text */
+  --accent-blue-light: #007bff; /* Standard, clean blue for links */
+  --bg-light-gradient-start: #F0F8FF; /* AliceBlue - very light blue */
+  --bg-light-gradient-end: #FFFFFF; /* Pure white */
+  --border-light: #D0D0D0; /* Softer grey for borders */
 }
 
 /* Reset básico */
@@ -27,10 +27,14 @@
   }
   
   body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-dark);
+    font-family: 'Roboto', sans-serif;
     color: var(--text-light);
     line-height: 1.6;
+    cursor: crosshair;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Cinzel', serif;
   }
   
   /* Header */
@@ -224,12 +228,12 @@ section a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     transition: opacity 1s ease; /* <- Transición suave */
   }
   
   #particles-js {
-    background: transparent;
+    background-color: var(--bg-dark);
     opacity: 1;
   }
   
@@ -357,16 +361,6 @@ body.light-mode #particles-js {
   pointer-events: none; /* No deja que el mouse interactúe con las partículas */
 }
 
-/* Fondo oscuro del body */
-body {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-}
-
-body.light-mode #particles-js {
-  display: none; /* Ocultamos partículas en modo claro */
-}
-
 /* Asegurarse de que el fondo de las secciones no cambie */
 section {
   background: none;
@@ -420,15 +414,6 @@ header {
   
   body.light-mode #particles-js {
     background-color: var(--bg-light);
-  }
-  
-  /* Links también cambian en claro */
-  body.light-mode a {
-    color: var(--accent-blue-light);
-  }
-  
-  body.light-mode #particles-js {
-    display: none; /* Ocultamos partículas en modo claro */
   }
   
   .photo {
@@ -777,9 +762,14 @@ body.light-mode #certificaciones {
 }
 
 .burbujita:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
   background-color: var(--accent-gold);
+  box-shadow: 0 0 20px var(--accent-gold);
   cursor: pointer;
+}
+
+body.light-mode .burbujita:hover {
+  color: var(--text-dark); /* Texto oscuro en modo claro al hacer hover */
 }
 
 @media (max-width: 768px) {
@@ -828,6 +818,25 @@ body.light-mode #certificaciones {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--accent-gold);
+  display: flex; /* Para alinear el texto y el icono */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.project-play-icon {
+  margin-left: 10px;
+  font-size: 1.2em; /* Tamaño relativo al texto del h3 */
+  color: var(--text-light); /* Color inicial */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+body.light-mode .project-play-icon {
+  color: var(--text-dark); /* Color oscuro en modo claro */
+}
+
+.proyecto h3:hover .project-play-icon {
+  color: var(--accent-red); /* Cambiar color al pasar el ratón sobre el h3 */
+  transform: scale(1.2); /* Aumentar tamaño al pasar el ratón */
 }
 
 .proyecto p {
@@ -1014,13 +1023,15 @@ body.light-mode #certificaciones {
 /* Animaciones de sección */
 section {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(80px);
+  filter: blur(5px);
+  transition: opacity 1s ease-out, transform 1s ease-out, filter 1s ease-out;
 }
 
 section.visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
 }
 
 /* Efecto Glitch */
@@ -1039,7 +1050,6 @@ section.visible {
   width: 100%;
   height: 100%;
   background: var(--bg-dark);
-  overflow: hidden;
   color: var(--accent-red);
 }
 

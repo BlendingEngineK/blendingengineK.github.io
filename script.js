@@ -63,73 +63,75 @@ if (themeToggle) {
 }
 
 
-// Configuración de particles.js
-particlesJS('particles-js', {
-    particles: {
-      number: {
-        value: 100, // Más partículas para un efecto más denso
-        density: {
+document.addEventListener('DOMContentLoaded', function() {
+  // Configuración de particles.js
+  particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 100, // Más partículas para un efecto más denso
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ["#DC143C", "#FFD700", "#dddddd"] // Rojo (pétalo), Dorado (chispa), Gris (ceniza)
+        },
+        shape: {
+          type: "char", // Usar caracteres como forma
+          stroke: { width: 0, color: "#000000" },
+          polygon: { nb_sides: 5 },
+          character: {
+            value: "▚▞▙▟▰▱▲▼◆◇◈◉◎●◦", // Caracteres que evocan formas rúnicas/abstractas
+            font: "Verdana", // Una fuente común que soporte estos caracteres
+            style: "",
+            weight: "400"
+          }
+        },
+        opacity: {
+          value: 0.7, // Opacidad inicial más alta
+          random: true, // Opacidad inicial aleatoria
+          anim: {
+            enable: true, // Habilitar animación de opacidad para desvanecimiento
+            speed: 1, // Velocidad de desvanecimiento
+            opacity_min: 0.1, // Opacidad mínima al desvanecerse
+            sync: false
+          }
+        },
+        size: {
+          value: 5, // Tamaño de las partículas
+          random: true, // Tamaños variados
+          anim: {
+            enable: false // Sin animación de tamaño
+          }
+        },
+        line_linked: {
+          enable: false // Sin líneas de unión para pétalos/cenizas
+        },
+        move: {
           enable: true,
-          value_area: 800
+          speed: 1.5, // Velocidad de caída más lenta
+          direction: "bottom", // Caer hacia abajo
+          random: true, // Movimiento horizontal aleatorio
+          straight: false,
+          out_mode: "out",
+          bounce: false
         }
       },
-      color: {
-        value: ["#DC143C", "#FFD700", "#808080"] // Rojo (pétalo), Dorado (chispa), Gris (ceniza)
-      },
-      shape: {
-        type: "char", // Usar caracteres como forma
-        stroke: { width: 0, color: "#000000" },
-        polygon: { nb_sides: 5 },
-        character: {
-          value: "▚▞▙▟▰▱▲▼◆◇◈◉◎●◦", // Caracteres que evocan formas rúnicas/abstractas
-          font: "Verdana", // Una fuente común que soporte estos caracteres
-          style: "",
-          weight: "400"
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" }, // Mantener repulsión al pasar el ratón
+          onclick: { enable: true, mode: "push" } // Mantener empuje al hacer clic
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 },
+          push: { particles_nb: 4 }
         }
       },
-      opacity: {
-        value: 0.7, // Opacidad inicial más alta
-        random: true, // Opacidad inicial aleatoria
-        anim: {
-          enable: true, // Habilitar animación de opacidad para desvanecimiento
-          speed: 1, // Velocidad de desvanecimiento
-          opacity_min: 0.1, // Opacidad mínima al desvanecerse
-          sync: false
-        }
-      },
-      size: {
-        value: 5, // Tamaño de las partículas
-        random: true, // Tamaños variados
-        anim: {
-          enable: false // Sin animación de tamaño
-        }
-      },
-      line_linked: {
-        enable: false // Sin líneas de unión para pétalos/cenizas
-      },
-      move: {
-        enable: true,
-        speed: 1.5, // Velocidad de caída más lenta
-        direction: "bottom", // Caer hacia abajo
-        random: true, // Movimiento horizontal aleatorio
-        straight: false,
-        out_mode: "out",
-        bounce: false
-      }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: { enable: true, mode: "repulse" }, // Mantener repulsión al pasar el ratón
-        onclick: { enable: true, mode: "push" } // Mantener empuje al hacer clic
-      },
-      modes: {
-        repulse: { distance: 100, duration: 0.4 },
-        push: { particles_nb: 4 }
-      }
-    },
-    retina_detect: true
-  });  
+      retina_detect: true
+    });
+});  
 
 
 const menuToggle = document.getElementById('menu-toggle');
