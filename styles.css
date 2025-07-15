@@ -1,6 +1,6 @@
 :root {
   --bg-dark: #000000; /* Negro puro */
-  --bg-dark-header: rgba(34, 34, 34, 0.4); /* Aún más transparencia */
+  --bg-dark-header: rgba(34, 34, 34, 0.9); /* Menos transparencia para el navbar */
   --bg-dark-hover: #333333; /* Gris más claro para hover */
   --bg-dark-hover-alt: #444444; /* Otro gris para hover */
   --text-light: #ffffff; /* Blanco para texto principal */
@@ -10,13 +10,14 @@
   --border-dark: #333333; /* Borde oscuro */
 
   /* Colores para el modo claro */
-  --bg-light: #F8F8F8; /* Very light, slightly warm off-white */
-  --bg-light-header: #EFEFEF; /* Slightly darker, neutral light grey */
-  --text-dark: #222222; /* Soft black for main text */
-  --accent-blue-light: #007bff; /* Standard, clean blue for links */
+  --bg-light: #FDFDFD; /* Very light, soft cream */
+  --bg-light-header: #E6F2F0; /* Soft pastel blue-green for header and sections */
+  --text-dark: #333333; /* Dark charcoal for main text */
+  --accent-blue-light: #6A99A8; /* Muted, dusty blue for links */
   --bg-light-gradient-start: #F0F8FF; /* AliceBlue - very light blue */
   --bg-light-gradient-end: #FFFFFF; /* Pure white */
-  --border-light: #D0D0D0; /* Softer grey for borders */
+  --border-light: #C0D0D0; /* Soft, light grey-blue for borders */
+  --accent-light-mode: #FF6347; /* Tomato - Rojo anaranjado vibrante para modo claro */
 }
 
 /* Reset básico */
@@ -31,6 +32,7 @@
     color: var(--text-light);
     line-height: 1.6;
     cursor: crosshair;
+    font-size: 1rem;
   }
   
   h1, h2, h3 {
@@ -43,12 +45,20 @@
     justify-content: space-between;
     align-items: center;
     background: var(--bg-dark-header);
-    padding: 15px 40px;
+    padding: 1rem 2.5rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    padding-bottom: 1rem; /* Añadir padding-bottom para el contenido */
   }
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1.5rem;
+    padding-bottom: 1rem; /* Añadir padding-bottom para el contenido */
+  }
+}
   
   .logo {
     font-size: 1.5rem;
@@ -61,7 +71,14 @@
     margin-left: 20px;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1rem;
   }
+
+@media (max-width: 768px) {
+  nav a {
+    font-size: 0.9rem;
+  }
+}
   
   nav a:hover {
     color: var(--accent-gold);
@@ -72,9 +89,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 150px 40px 40px;
-    gap: 100px; /* Aumentamos el gap entre la información y la foto */
+    padding: 8rem 2.5rem 2.5rem;
+    gap: 3rem;
+    flex-wrap: wrap;
   }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 1.5rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+}
   
   .info {
     max-width: 700px;
@@ -82,30 +108,50 @@
   
   .info h1 {
     font-size: 2.5rem; /* Tamaño más pequeño */
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
   }
+
+@media (max-width: 768px) {
+  .info h1 {
+    font-size: 2rem;
+  }
+}
   
   .info h2 {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     color: var(--accent-gold);
   }
+
+body.light-mode .info h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .info h2 {
+    font-size: 1.2rem;
+  }
+}
   
   .info ul {
     list-style: none;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
   
   /* Estilo del contenedor de correo */
 .info ul li {
     display: flex; /* Usamos flexbox para alinear el icono y el texto */
     align-items: center; /* Alineamos verticalmente el icono y el texto */
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 /* Estilo del icono y el texto del correo */
 .info ul li a {
-    margin-left: 10px; /* Espacio entre el icono y el correo */
+    margin-left: 0.5rem; /* Espacio entre el icono y el correo */
+}
+
+.info ul li i {
+  margin-right: 0.5rem;
 }
 
 /* En pantallas pequeñas */
@@ -132,6 +178,10 @@
     align-items: center;
 }
 
+body.light-mode .photo {
+  border-color: var(--accent-light-mode);
+}
+
 /* Imagen dentro del contenedor */
 .photo img {
     width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
@@ -140,16 +190,19 @@
 }
 
 /* En dispositivos móviles */
-@media (orientation: portrait) {
+@media (max-width: 768px) {
     .photo {
         width: 150px; /* Reducimos el tamaño del círculo */
+        height: 150px;
+        display: block; /* Aseguramos que se muestre */
+        margin: 1rem auto; /* Centrar en móvil */
     }
 }
 
 /* Ocultar la foto en modo vertical */
-@media (orientation: portrait) {
+@media (orientation: portrait) and (max-width: 768px) {
     .photo {
-        display: none; /* Oculta el contenedor de la foto */
+        display: block; /* Aseguramos que se muestre */
     }
 }
 
@@ -158,7 +211,7 @@
   .animated-button {
     background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
     border: none;
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
     border-radius: 30px;
     color: var(--text-light);
     font-size: 1rem;
@@ -166,26 +219,52 @@
     transition: 0.4s ease;
   }
   
+  body.light-mode .animated-button {
+    background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
+  }
+
   .animated-button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 15px var(--accent-gold);
   }
+
+  body.light-mode .animated-button:hover {
+    box-shadow: 0 0 15px var(--accent-light-mode);
+  }
+
+@media (max-width: 768px) {
+  .animated-button {
+    font-size: 0.9rem;
+  }
+}
   
   /* Secciones */
   section {
-  padding: 80px 40px;
+  padding: 5rem 2.5rem;
   border-bottom: 1px solid var(--border-dark);
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 1.5rem;
+  }
 }
   
   /* Estilo para los títulos de las secciones */
 section h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   color: var(--text-light);
   position: relative;
   text-transform: uppercase;  /* Convertir el texto a mayúsculas */
   font-weight: 600;
   letter-spacing: 2px;  /* Espaciado de letras */
+}
+
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Agregar una animación de color y una línea decorativa al pasar el cursor */
@@ -200,6 +279,10 @@ section h2::after {
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
+}
+
+body.light-mode section h2::after {
+  background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
 }
 
 /* Efecto de hover en los títulos */
@@ -219,6 +302,10 @@ section a {
 section a:hover {
   color: var(--text-light);
   text-decoration: underline;
+}
+
+body.light-mode section a:hover {
+  color: var(--accent-light-mode);
 }
 
   
@@ -256,12 +343,14 @@ header .header-background {
 /* Aplicar filtro solo en modo claro */
 body.light-mode .header-background {
   backdrop-filter: blur(10px); /* Filtro de desenfoque solo en modo claro */
+  background: rgba(230, 242, 240, 0.9); /* Fondo casi opaco para el navbar en modo claro */
 }
 
 
 /* Aplicar filtro solo en modo claro */
 body.light-mode .header-background {
   backdrop-filter: blur(10px); /* Filtro de desenfoque solo en modo claro */
+  background: rgba(230, 242, 240, 0.9); /* Fondo casi opaco para el navbar en modo claro */
 }
 
 /* Header */
@@ -288,6 +377,16 @@ header .logo, nav a {
   color: var(--accent-gold);
 }
 
+body.light-mode .logo {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
 /* Estilo para los enlaces del nav */
 nav a {
   color: var(--text-light);
@@ -304,6 +403,10 @@ nav a:hover {
   color: var(--accent-gold);
 }
 
+body.light-mode nav a:hover {
+  color: var(--accent-light-mode);
+}
+
 /* Estilo de los enlaces (como el email, LinkedIn, GitHub) */
 .info a {
   color: var(--text-light);
@@ -311,8 +414,16 @@ nav a:hover {
   z-index: 3; /* Asegura que los enlaces sean interactivos */
 }
 
+body.light-mode .info a {
+  color: var(--text-dark);
+}
+
 .info a:hover {
   color: var(--accent-gold);
+}
+
+body.light-mode .info a:hover {
+  color: var(--accent-light-mode);
 }
 
 /* Animación de hover para los enlaces del nav */
@@ -327,6 +438,10 @@ nav a::after {
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
+}
+
+body.light-mode nav a::after {
+  background: var(--accent-light-mode);
 }
 
 /* Mostrar la línea cuando el enlace se activa */
@@ -385,6 +500,10 @@ header {
   transition: transform 0.3s ease;
 }
 
+body.light-mode #theme-toggle {
+  color: var(--text-dark);
+}
+
 #theme-toggle:hover {
   transform: rotate(15deg);
 }
@@ -435,24 +554,32 @@ header {
   }
 
   #sobre-mi {
-    padding: 80px 40px;
+    padding: 4rem 2rem;
     background: var(--bg-dark-header); /* Usar variable */
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin: 80px 0; /* Espacio alrededor aumentado */
+    margin: 4rem auto; /* Espacio alrededor aumentado y centrado */
+    max-width: 1200px; /* Limitar el ancho para mejor legibilidad */
   }
   
   #sobre-mi h2 {
     font-size: 2rem;
     color: var(--accent-gold);
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
+
+@media (max-width: 768px) {
+  #sobre-mi h2 {
+    font-size: 1.8rem;
+  }
+}
   
   #sobre-mi p {
     font-size: 1.2rem;
     color: var(--text-light-alt);
     line-height: 1.8;
     text-align: justify;
+    margin-bottom: 1rem;
   }
   
   /* Estilos para el modo claro */
@@ -461,7 +588,7 @@ body.light-mode #sobre-mi {
   }
   
   body.light-mode #sobre-mi h2 {
-    color: var(--accent-gold); /* Mantener el color naranja del título */
+    color: var(--accent-light-mode); /* Usar el color de acento para modo claro */
   }
   
   body.light-mode #sobre-mi p {
@@ -482,10 +609,18 @@ body.light-mode #sobre-mi {
   z-index: 3; /* Asegura que el botón esté por encima de otros elementos */
 }
 
+body.light-mode #download-cv {
+  background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
+}
+
 /* Efecto de hover para el botón */
 #download-cv:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px var(--accent-gold);
+}
+
+body.light-mode #download-cv:hover {
+  box-shadow: 0 0 15px var(--accent-light-mode);
 }
 
 /* Asegura que el botón sea visible y esté interactivo */
@@ -501,33 +636,65 @@ body.light-mode #sobre-mi {
   border-radius: 8px;
 }
 
+body.light-mode #experiencia {
+  background: var(--bg-light-header);
+}
+
 #experiencia h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   color: var(--accent-gold);
 }
 
+body.light-mode #experiencia h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #experiencia h2 {
+    font-size: 1.8rem;
+  }
+}
+
 .experiencia {
-  margin-bottom: 40px;
-  padding: 20px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
   background: var(--bg-dark-header);
-  border-radius: 8px;
+  border-radius: 10px;
+}
+
+body.light-mode .experiencia {
+  background: #D9E8E6;
 }
 
 .experiencia .detalles {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .experiencia h3 {
   font-size: 1.8rem;
   color: var(--accent-gold);
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+}
+
+body.light-mode .experiencia h3 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .experiencia h3 {
+    font-size: 1.5rem;
+  }
 }
 
 .experiencia p {
   font-size: 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   color: var(--text-light);
+}
+
+body.light-mode .experiencia p {
+  color: var(--text-dark);
 }
 
 .responsabilidades {
@@ -536,9 +703,19 @@ body.light-mode #sobre-mi {
 }
 
 .responsabilidades li {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   color: var(--text-light);
+}
+
+body.light-mode .responsabilidades li {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .responsabilidades li {
+    font-size: 0.9rem;
+  }
 }
 
 /* Estilo para la sección de educación */
@@ -551,33 +728,65 @@ body.light-mode #sobre-mi {
   border-radius: 8px;
 }
 
+body.light-mode #educacion {
+  background: var(--bg-light-header);
+}
+
 #educacion h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   color: var(--accent-gold);
 }
 
+body.light-mode #educacion h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #educacion h2 {
+    font-size: 1.8rem;
+  }
+}
+
 .educacion {
-  margin-bottom: 40px;
-  padding: 20px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
   background: var(--bg-dark-header);
-  border-radius: 8px;
+  border-radius: 10px;
+}
+
+body.light-mode .educacion {
+  background: #D9E8E6;
 }
 
 .educacion .detalles {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .educacion h3 {
   font-size: 1.8rem;
   color: var(--accent-gold);
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+}
+
+body.light-mode .educacion h3 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .educacion h3 {
+    font-size: 1.5rem;
+  }
 }
 
 .educacion p {
   font-size: 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   color: var(--text-light);
+}
+
+body.light-mode .educacion p {
+  color: var(--text-dark);
 }
 
 /* Aseguramos que los enlaces en la sección de educación sean interactivos */
@@ -600,7 +809,7 @@ body.light-mode #educacion a {
 }
 
 body.light-mode #educacion a:hover {
-  color: var(--accent-gold);
+  color: var(--accent-light-mode);
   text-decoration: underline; /* Subrayado */
 }
 
@@ -620,7 +829,7 @@ body.light-mode #habilidades a {
 }
 
 body.light-mode #habilidades a:hover {
-  color: var(--accent-gold);
+  color: var(--accent-light-mode);
   text-decoration: underline; /* Subrayado */
 }
 
@@ -637,15 +846,35 @@ body.dark-mode #habilidades {
   color: var(--accent-gold);
 }
 
+body.light-mode .educacion h4 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .educacion h4 {
+    font-size: 1.1rem;
+  }
+}
+
 .conocimientos {
   list-style: none;
   padding-left: 20px;
 }
 
 .conocimientos li {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   color: var(--text-light);
+}
+
+body.light-mode .conocimientos li {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .conocimientos li {
+    font-size: 0.9rem;
+  }
 }
 
 
@@ -653,26 +882,44 @@ body.dark-mode #habilidades {
 /* Sección de Idiomas */
 #idiomas {
   background-color: var(--bg-dark-header);
-  padding: 40px;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #idiomas {
+  background-color: var(--bg-light-header);
 }
 
 #idiomas h2 {
   color: var(--accent-gold);
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   font-size: 2rem;
+}
+
+body.light-mode #idiomas h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #idiomas h2 {
+    font-size: 1.8rem;
+  }
 }
 
 .idioma-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  padding: 10px;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
   background-color: var(--bg-dark-header);
   border-bottom: 1px solid var(--border-dark);
-  border-radius: 4px;
+  border-radius: 10px;
+}
+
+body.light-mode .idioma-item {
+  background-color: #D9E8E6;
 }
 
 .idioma {
@@ -680,10 +927,30 @@ body.dark-mode #habilidades {
   color: var(--text-light);
 }
 
+@media (max-width: 768px) {
+  .idioma {
+    font-size: 1rem;
+  }
+}
+
 .nivel {
   font-size: 1.2rem;
   color: var(--accent-gold);
   font-weight: bold;
+}
+
+body.light-mode .nivel {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .nivel {
+    font-size: 1rem;
+  }
+}
+
+body.light-mode .nivel {
+  color: var(--accent-light-mode);
 }
 
 /* Hover (ambos modos) */
@@ -693,8 +960,16 @@ body.dark-mode #habilidades {
   transition: background-color 0.3s ease;
 }
 
+body.light-mode .idioma-item:hover {
+  background-color: #D9E8E6;
+}
+
 .idioma-item:hover .nivel {
   color: var(--text-light);
+}
+
+body.light-mode .idioma-item:hover .nivel {
+  color: var(--accent-light-mode);
 }
 
 /* Modo claro: fondo exterior claro, items oscuros */
@@ -703,31 +978,43 @@ body.light-mode #idiomas {
 }
 
 body.light-mode .idioma-item {
-  background-color: var(--bg-dark-header);
+  background-color: var(--bg-light);
   border-bottom: 1px solid var(--border-light);
 }
 
 body.light-mode .idioma {
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
-body.light-mode .nivel {
-  color: var(--accent-gold);
-}
+
 
 /* Estilos para la sección de competencias digitales */
 #habilidades {
   background-color: var(--bg-dark-header);
-  padding: 40px;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+body.light-mode #habilidades {
+  background-color: var(--bg-light-header);
+}
+
 #habilidades h2 {
   color: var(--accent-gold);
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
+}
+
+body.light-mode #habilidades h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #habilidades h2 {
+    font-size: 1.8rem;
+  }
 }
 
 /* Fondo para la sección de educación en modo claro */
@@ -750,17 +1037,36 @@ body.light-mode #certificaciones {
   gap: 20px;
 }
 
+.section-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .section-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .burbujita {
   background-color: var(--bg-dark-hover);
   color: var(--text-light);
-  padding: 12px 20px;
-  border-radius: 20px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 500;
   text-align: center;
   max-width: 250px;
   width: auto;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .burbujita {
+    font-size: 0.9rem;
+  }
 }
 
 .burbujita:hover {
@@ -772,6 +1078,13 @@ body.light-mode #certificaciones {
 
 body.light-mode .burbujita:hover {
   color: var(--text-dark); /* Texto oscuro en modo claro al hacer hover */
+  background-color: var(--accent-light-mode);
+  box-shadow: 0 0 20px var(--accent-light-mode);
+}
+
+body.light-mode .burbujita:hover {
+  color: var(--text-dark); /* Texto oscuro en modo claro al hacer hover */
+  background-color: var(--accent-light-mode);
 }
 
 @media (max-width: 768px) {
@@ -784,45 +1097,78 @@ body.light-mode .burbujita:hover {
 /* Estilos para la sección de proyectos */
 #proyectos {
   background-color: var(--bg-dark-header);
-  padding: 40px;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   z-index: 2; /* Asegura que los enlaces sean clicables */
 }
 
+body.light-mode #proyectos {
+  background-color: var(--bg-light-header);
+}
+
 #proyectos h2 {
   color: var(--accent-gold);
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
+}
+
+body.light-mode #proyectos h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #proyectos h2 {
+    font-size: 1.8rem;
+  }
 }
 
 .proyectos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .proyecto {
   background-color: var(--bg-dark-hover);
   color: var(--text-light);
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 1.5rem;
   max-width: 300px;
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+body.light-mode .proyecto {
+  background-color: var(--bg-light-header);
+  color: var(--text-dark);
+}
+
 .proyecto h3 {
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 0.5rem;
   color: var(--accent-gold);
   display: flex; /* Para alinear el texto y el icono */
   align-items: center; /* Centrar verticalmente */
   justify-content: center; /* Centrar horizontalmente */
+}
+
+body.light-mode .proyecto h3 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .proyecto h3 {
+    font-size: 1.3rem;
+  }
+}
+
+body.light-mode .proyecto h3 {
+  color: var(--accent-light-mode);
 }
 
 .project-play-icon {
@@ -841,20 +1187,45 @@ body.light-mode .project-play-icon {
   transform: scale(1.2); /* Aumentar tamaño al pasar el ratón */
 }
 
+body.light-mode .proyecto h3:hover .project-play-icon {
+  color: var(--accent-light-mode); /* Cambiar color al pasar el ratón sobre el h3 en modo claro */
+}
+
 .proyecto p {
   font-size: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   color: var(--text-light-alt);
+}
+
+body.light-mode .proyecto p {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .proyecto p {
+    font-size: 0.9rem;
+  }
 }
 
 .proyecto-link {
   background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
   color: var(--text-light);
-  padding: 10px 20px;
+  padding: 0.75rem 1.25rem;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+body.light-mode .proyecto-link {
+  background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
+}
+
+@media (max-width: 768px) {
+  .proyecto-link {
+    font-size: 0.9rem;
+  }
 }
 
 .proyecto-link:hover {
@@ -866,6 +1237,10 @@ body.light-mode .project-play-icon {
   background-color: var(--bg-dark-hover-alt);
 }
 
+body.light-mode .proyecto:hover {
+  background-color: var(--bg-light-header);
+}
+
 @media (max-width: 768px) {
   .proyecto {
     max-width: 100%;
@@ -875,58 +1250,108 @@ body.light-mode .project-play-icon {
 /* Estilos para la sección de certificaciones */
 #certificaciones {
   background-color: var(--bg-dark-header);
-  padding: 40px;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   z-index: 3;
 }
 
+body.light-mode #certificaciones {
+  background-color: var(--bg-light-header);
+}
+
 #certificaciones h2 {
   color: var(--accent-gold);
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   font-size: 2rem;
+}
+
+body.light-mode #certificaciones h2 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  #certificaciones h2 {
+    font-size: 1.8rem;
+  }
 }
 
 .certificaciones-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .certificacion {
   background-color: var(--bg-dark-hover);
   color: var(--text-light);
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 1.5rem;
   max-width: 300px;
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+body.light-mode .certificacion {
+  background-color: var(--bg-light-header);
+  color: var(--text-dark);
+}
+
 .certificacion h3 {
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 0.5rem;
   color: var(--accent-gold);
+}
+
+body.light-mode .certificacion h3 {
+  color: var(--accent-light-mode);
+}
+
+@media (max-width: 768px) {
+  .certificacion h3 {
+    font-size: 1.3rem;
+  }
 }
 
 .certificacion p {
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   color: var(--text-light-alt);
+}
+
+body.light-mode .certificacion p {
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .certificacion p {
+    font-size: 0.9rem;
+  }
 }
 
 .certificacion-link {
   background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
   color: var(--text-light);
-  padding: 10px 20px;
+  padding: 0.75rem 1.25rem;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+body.light-mode .certificacion-link {
+  background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
+}
+
+@media (max-width: 768px) {
+  .certificacion-link {
+    font-size: 0.9rem;
+  }
 }
 
 .certificacion-link:hover {
@@ -936,6 +1361,10 @@ body.light-mode .project-play-icon {
 .certificacion:hover {
   transform: translateY(-10px);
   background-color: var(--bg-dark-hover-alt);
+}
+
+body.light-mode .certificacion:hover {
+  background-color: var(--bg-light-header);
 }
 
 @media (max-width: 768px) {
@@ -950,6 +1379,10 @@ body.light-mode .project-play-icon {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+body.light-mode .navbar {
+  background-color: var(--bg-light-header);
 }
 
 .navbar-container {
@@ -973,6 +1406,12 @@ body.light-mode .project-play-icon {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .menu-toggle {
+    font-size: 1.5rem;
+  }
+}
+
 /* Menú normal (desktop) */
 .nav-links {
   display: flex;
@@ -984,11 +1423,15 @@ body.light-mode .project-play-icon {
   color: var(--text-light);
   text-decoration: none;
   font-weight: 500;
-  padding: 6px 10px;
+  padding: 0.5rem 0.75rem;
   transition: background 0.3s ease;
   border: none;
   background: none;
   cursor: pointer;
+}
+
+body.light-mode .nav-links a, body.light-mode .nav-links button {
+  color: var(--text-dark);
 }
 
 /* Menú móvil (cuando colapsa) */
@@ -1013,7 +1456,7 @@ body.light-mode .project-play-icon {
 
   .nav-links a, .nav-links button {
     text-align: left;
-    padding: 10px;
+    padding: 0.75rem;
   }
 }
 
@@ -1056,6 +1499,10 @@ section {
   left: -2px;
   text-shadow: -2px 0 var(--accent-gold);
   animation: glitch-anim-2 2s infinite alternate-reverse;
+}
+
+body.light-mode .glitch-effect::after {
+  text-shadow: -2px 0 var(--accent-light-mode);
 }
 
 /* Animación para la foto de perfil */
