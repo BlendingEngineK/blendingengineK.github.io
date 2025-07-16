@@ -43,17 +43,20 @@ const particlesDarkConfig = {
 
 const particlesLightConfig = {
   particles: {
-    number: { value: 150, density: { enable: true, value_area: 800 } },
-    color: { value: ["#708090", "#778899", "#A9A9A9"] }, // Tonos de gris/azul visibles
-    shape: { type: "circle" },
+    number: { value: 80, density: { enable: true, value_area: 800 } },
+    shape: {
+      type: 'image',
+      image: { src: 'snowflake.png', width: 100, height: 100 }
+    },
     opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
-    size: { value: 4, random: true },
-    move: { enable: true, speed: 2, direction: "bottom-left", random: false, straight: false, out_mode: "out", bounce: false }
+    size: { value: 12, random: true, anim: { enable: false, speed: 4, size_min: 8, sync: false } },
+    line_linked: { enable: false },
+    move: { enable: true, speed: 2, direction: 'bottom-left', random: false, straight: false, out_mode: 'out', bounce: false }
   },
   interactivity: {
-    detect_on: "canvas",
-    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
-    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+    detect_on: 'canvas',
+    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 2 } }
   },
   retina_detect: true
 };
@@ -159,8 +162,12 @@ menuToggle.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Cargar partículas oscuras por defecto
-  loadParticles(particlesDarkConfig);
+  // Comprobar el tema actual y cargar las partículas correspondientes
+  if (document.body.classList.contains('light-mode')) {
+    loadParticles(particlesLightConfig);
+  } else {
+    loadParticles(particlesDarkConfig);
+  }
 
   // Iniciar música en la primera interacción del usuario
   document.body.addEventListener('click', () => {
