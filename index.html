@@ -64,7 +64,7 @@
     <div class="section-grid-container">
       <div class="experiencia">
         <div class="detalles">
-          <h3>🚀 Endless Runner (Unreal Engine) <i class="fas fa-play-circle project-play-icon"></i></h3>
+          <h3 data-project-id="cyber-runner">🚀 Cyber Runner <i class="fas fa-play-circle project-play-icon"></i></h3>
           <p><strong>Rol:</strong> Desarrollador Solitario</p>
           <p><strong>Motor:</strong> Unreal Engine</p>
           <p><strong>Fecha:</strong> 2023</p>
@@ -79,7 +79,7 @@
 
       <div class="experiencia">
         <div class="detalles">
-          <h3>🎨 Menú Interactivo para Endless Runner (Unity) <i class="fas fa-play-circle project-play-icon"></i></h3>
+          <h3 data-project-id="endless-season">🎨 Endless Season <i class="fas fa-play-circle project-play-icon"></i></h3>
           <p><strong>Rol:</strong> Menu Artist & UI Programmer</p>
           <p><strong>Motor:</strong> Unity</p>
           <p><strong>Fecha:</strong> 2025</p>
@@ -93,7 +93,7 @@
 
       <div class="experiencia">
         <div class="detalles">
-          <h3>👾 AI EXPERIMENT (FPS 2.5D) <i class="fas fa-play-circle project-play-icon"></i></h3>
+          <h3 data-project-id="experiment-ia">👾 ExperimentIA <i class="fas fa-play-circle project-play-icon"></i></h3>
           <p><strong>Rol:</strong> Programador de Gameplay y IA</p>
           <p><strong>Motor:</strong> Unity</p>
           <p><strong>Equipo:</strong> Colaboración en Equipo</p>
@@ -107,7 +107,7 @@
 
       <div class="experiencia">
         <div class="detalles">
-          <h3>📱 Tower Defense Gacha para Android <i class="fas fa-play-circle project-play-icon"></i></h3>
+          <h3 data-project-id="oh-my-gods">📱 Oh My Gods! <i class="fas fa-play-circle project-play-icon"></i></h3>
           <p><strong>Rol:</strong> Programador de Sistemas y Economía</p>
           <p><strong>Estudio:</strong> Bug & Play Studio (no oficial)</p>
           <p><strong>Fecha:</strong> Actual</p>
@@ -178,6 +178,19 @@
 
    <!-- Scripts -->
    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+   
+  <!-- Video Pop-up -->
+  <div id="video-popup" class="video-popup">
+    <div class="video-popup-content">
+      <span class="close-button">&times;</span>
+      <div id="video-container">
+        <video id="project-video" controls autoplay muted></video>
+        <div id="coming-soon-glitch" class="glitch-container">
+          <div class="glitch-text" data-text="PRÓXIMAMENTE">PRÓXIMAMENTE</div>
+        </div>
+      </div>
+    </div>
+  </div>
    
 </body>
 </html>

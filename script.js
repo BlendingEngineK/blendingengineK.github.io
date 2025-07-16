@@ -181,4 +181,65 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }, { once: true });
+
+  // Video Pop-up functionality
+  const videoPopup = document.getElementById('video-popup');
+  const closeButton = document.querySelector('.video-popup .close-button');
+  const projectVideo = document.getElementById('project-video');
+  const comingSoonGlitch = document.getElementById('coming-soon-glitch');
+  const projectPlayIcons = document.querySelectorAll('.project-play-icon');
+
+  projectPlayIcons.forEach(icon => {
+    icon.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent parent click events
+      const projectId = event.target.closest('[data-project-id]').dataset.projectId;
+
+      if (projectId === 'oh-my-gods') {
+        projectVideo.style.display = 'none';
+        comingSoonGlitch.style.display = 'flex';
+        startGlitchAnimation();
+      } else {
+        projectVideo.style.display = 'block';
+        comingSoonGlitch.style.display = 'none';
+        stopGlitchAnimation();
+        let videoFileName;
+        if (projectId === 'cyber-runner') {
+          videoFileName = 'Cyber Runner.mp4';
+        } else if (projectId === 'endless-season') {
+          videoFileName = 'Endless Season.mp4';
+        } else if (projectId === 'experiment-ia') {
+          videoFileName = 'ExperimentIA.mp4';
+        }
+        projectVideo.src = `videos/${videoFileName}`;
+        projectVideo.load();
+        projectVideo.play();
+      }
+      videoPopup.classList.add('show');
+    });
+  });
+
+  closeButton.addEventListener('click', () => {
+    videoPopup.classList.remove('show');
+    projectVideo.pause();
+    projectVideo.currentTime = 0;
+    stopGlitchAnimation();
+  });
+
+  videoPopup.addEventListener('click', (event) => {
+    if (event.target === videoPopup) {
+      videoPopup.classList.remove('show');
+      projectVideo.pause();
+      projectVideo.currentTime = 0;
+      stopGlitchAnimation();
+    }
+  });
+
+  // Glitch animation for "Próximamente"
+  function startGlitchAnimation() {
+    // No movement logic needed here, CSS will handle glitch and pulse
+  }
+
+  function stopGlitchAnimation() {
+    // No movement logic needed here
+  }
 });
