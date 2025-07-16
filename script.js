@@ -46,7 +46,7 @@ const particlesLightConfig = {
     number: { value: 80, density: { enable: true, value_area: 800 } },
     shape: {
       type: 'image',
-      image: { src: 'snowflake.png', width: 100, height: 100 }
+      image: { src: 'images/snowflake.png', width: 100, height: 100 }
     },
     opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
     size: { value: 12, random: true, anim: { enable: false, speed: 4, size_min: 8, sync: false } },
@@ -83,6 +83,7 @@ function playSound(sound) {
 }
 
 function loadParticles(config) {
+  console.log('loadParticles called with config:', config);
   if (window.pJSDom && window.pJSDom.length > 0) {
     window.pJSDom[0].pJS.fn.vendors.destroypJS();
     window.pJSDom = [];
@@ -134,7 +135,11 @@ if (themeToggle) {
 
     if (document.body.classList.contains('light-mode')) {
       themeToggle.innerHTML = "<i class=\"fas fa-fire-extinguisher\"></i>";
-      loadParticles(particlesLightConfig);
+      const snowflakeImages = ['images/snowflake.png', 'images/snowflake2.png', 'images/snowflake3.png'];
+      const randomIndex = Math.floor(Math.random() * snowflakeImages.length);
+      const currentParticlesLightConfig = JSON.parse(JSON.stringify(particlesLightConfig)); // Deep copy
+      currentParticlesLightConfig.particles.shape.image.src = snowflakeImages[randomIndex];
+      loadParticles(currentParticlesLightConfig);
       backgroundMusic.pause();
       bonfireSound.pause();
       if (isAudioEnabled) {
