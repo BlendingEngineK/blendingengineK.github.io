@@ -1,142 +1,177 @@
 // Cargar los sonidos
 const hoverSound = new Audio('Whoosh.flac');
 const clickSound = new Audio('thud.wav');
+const clickSoundLight = new Audio('thudLightMode.wav');
 const bonfireSound = new Audio('Hoguera.wav');
+const bonfireSoundLight = new Audio('HogueraLightMode.wav');
 const backgroundMusic = new Audio('BackgroundMusic.mp3');
-backgroundMusic.loop = true; // La música de fondo se reproduce en bucle
-backgroundMusic.volume = 0.3; // Ajustar el volumen de la música de fondo
+const backgroundMusicLight = new Audio('BackgroundMusicLightMode.mp3');
 
-let isAudioEnabled = true; // Estado inicial del audio
+// --- Configuración de Audio ---
+const soundEffects = [hoverSound, clickSound, clickSoundLight];
 
-// Función para reproducir un sonido
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.3;
+backgroundMusicLight.loop = true;
+backgroundMusicLight.volume = 0.3;
+
+bonfireSound.loop = true;
+bonfireSound.volume = 0.15;
+bonfireSoundLight.loop = true;
+bonfireSoundLight.volume = 0.15;
+
+let isAudioEnabled = true;
+
+// --- Configuración de Partículas ---
+const particlesDarkConfig = {
+  particles: {
+    number: { value: 100, density: { enable: true, value_area: 800 } },
+    color: { value: ["#FFD700", "#DC143C", "#808080"] }, // Amarillo/Dorado, Rojo y Gris
+    shape: { type: "circle" },
+    opacity: { value: 0.7, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+    size: { value: 5, random: true },
+    line_linked: { enable: false }, // Asegurarse de que no haya líneas
+    move: { enable: true, speed: 1.5, direction: "bottom", random: true, straight: false, out_mode: "out", bounce: false }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
+};
+
+const particlesLightConfig = {
+  particles: {
+    number: { value: 150, density: { enable: true, value_area: 800 } },
+    color: { value: ["#708090", "#778899", "#A9A9A9"] }, // Tonos de gris/azul visibles
+    shape: { type: "circle" },
+    opacity: { value: 0.8, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+    size: { value: 4, random: true },
+    move: { enable: true, speed: 2, direction: "bottom-left", random: false, straight: false, out_mode: "out", bounce: false }
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+  },
+  retina_detect: true
+};
+
+// --- Funciones ---
 function playSound(sound) {
   if (isAudioEnabled) {
-    sound.currentTime = 0; // Reiniciar el sonido si ya se está reproduciendo
+    const shortSounds = [hoverSound, clickSound, clickSoundLight];
+    if (shortSounds.includes(sound)) {
+      const isAnotherSoundInEarlyPlay = shortSounds.some(s => !s.paused && s.currentTime < 2);
+      if (isAnotherSoundInEarlyPlay) {
+        return;
+      }
+    }
+    soundEffects.forEach(effect => {
+      if (effect !== sound) {
+        effect.pause();
+        effect.currentTime = 0;
+      }
+    });
+    sound.currentTime = 0;
     sound.play();
   }
 }
 
-// Añadir eventos de sonido a enlaces y botones
+function loadParticles(config) {
+  if (window.pJSDom && window.pJSDom.length > 0) {
+    window.pJSDom[0].pJS.fn.vendors.destroypJS();
+    window.pJSDom = [];
+  }
+  particlesJS('particles-js', config);
+}
+
+
+// --- Eventos ---
 document.querySelectorAll('a, button').forEach(element => {
   element.addEventListener('mouseover', () => playSound(hoverSound));
-  element.addEventListener('click', () => playSound(clickSound));
+  element.addEventListener('click', () => {
+    if (document.body.classList.contains('light-mode')) {
+      playSound(clickSoundLight);
+    } else {
+      playSound(clickSound);
+    }
+  });
 });
 
-// Control de Audio
 const audioToggle = document.getElementById('audio-toggle');
-
 if (audioToggle) {
   audioToggle.addEventListener('click', () => {
-    isAudioEnabled = !isAudioEnabled; // Alternar el estado del audio
+    isAudioEnabled = !isAudioEnabled;
     if (isAudioEnabled) {
-      audioToggle.textContent = "🔊"; // Icono de altavoz activado
-      // Si la música de fondo estaba reproduciéndose en modo oscuro, reanudarla
-      if (!document.body.classList.contains('light-mode')) {
+      audioToggle.textContent = "🔊";
+      if (document.body.classList.contains('light-mode')) {
+        backgroundMusicLight.play();
+        bonfireSoundLight.play();
+      } else {
         backgroundMusic.play();
+        bonfireSound.play();
       }
-    } else {
-      audioToggle.textContent = "🔇"; // Icono de altavoz silenciado
-      backgroundMusic.pause(); // Pausar la música de fondo
+    }
+    else {
+      audioToggle.textContent = "🔇";
+      backgroundMusic.pause();
+      backgroundMusicLight.pause();
+      bonfireSound.pause();
+      bonfireSoundLight.pause();
     }
   });
 }
 
-// Toggle modo claro / oscuro
 const themeToggle = document.getElementById('theme-toggle');
-
 if (themeToggle) {
   themeToggle.addEventListener('click', function() {
     document.body.classList.toggle('light-mode');
 
     if (document.body.classList.contains('light-mode')) {
-      themeToggle.innerHTML = "<i class=\"fas fa-fire-extinguisher\"></i>"; // Icono de extintor para modo día
-      backgroundMusic.pause(); // Pausar la música en modo claro
-      backgroundMusic.currentTime = 0; // Reiniciar la música
+      themeToggle.innerHTML = "<i class=\"fas fa-fire-extinguisher\"></i>";
+      loadParticles(particlesLightConfig);
+      backgroundMusic.pause();
+      bonfireSound.pause();
+      if (isAudioEnabled) {
+        backgroundMusicLight.play();
+        bonfireSoundLight.play();
+      }
     } else {
-      themeToggle.innerHTML = "<i class=\"fas fa-fire\"></i>"; // Icono de fuego para modo noche
-      if (isAudioEnabled) { // Solo reproducir si el audio está activado
-        playSound(bonfireSound); // Sonido de hoguera al activar modo oscuro
-        backgroundMusic.play(); // Reproducir música en modo oscuro
+      themeToggle.innerHTML = "<i class=\"fas fa-fire\"></i>";
+      loadParticles(particlesDarkConfig);
+      backgroundMusicLight.pause();
+      bonfireSoundLight.pause();
+      if (isAudioEnabled) {
+        backgroundMusic.play();
+        bonfireSound.play();
       }
     }
   });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Iniciar música en la primera interacción del usuario
-  document.body.addEventListener('click', () => {
-    if (isAudioEnabled && !document.body.classList.contains('light-mode')) {
-        backgroundMusic.play();
-    }
-  }, { once: true });
-
-  // Configuración de particles.js
-  particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 100, // Más partículas para un efecto más denso
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: ["#DC143C", "#FFD700", "#808080"] // Rojo (pétalo), Dorado (chispa), Gris (ceniza)
-        },
-        shape: {
-          type: "circle", // Círculos para simular pétalos/cenizas
-          stroke: { width: 0, color: "#000000" },
-          polygon: { nb_sides: 5 }
-        },
-        opacity: {
-          value: 0.7, // Opacidad inicial más alta
-          random: true, // Opacidad inicial aleatoria
-          anim: {
-            enable: true, // Habilitar animación de opacidad para desvanecimiento
-            speed: 1, // Velocidad de desvanecimiento
-            opacity_min: 0.1, // Opacidad mínima al desvanecerse
-            sync: false
-          }
-        },
-        size: {
-          value: 5, // Tamaño de las partículas
-          random: true, // Tamaños variados
-          anim: {
-            enable: false // Sin animación de tamaño
-          }
-        },
-        line_linked: {
-          enable: false // Sin líneas de unión para pétalos/cenizas
-        },
-        move: {
-          enable: true,
-          speed: 1.5, // Velocidad de caída más lenta
-          direction: "bottom", // Caer hacia abajo
-          random: true, // Movimiento horizontal aleatorio
-          straight: false,
-          out_mode: "out",
-          bounce: false
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "repulse" }, // Mantener repulsión al pasar el ratón
-          onclick: { enable: true, mode: "push" } // Mantener empuje al hacer clic
-        },
-        modes: {
-          repulse: { distance: 100, duration: 0.4 },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
-    });
-});  
-
 
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
 menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('show');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Cargar partículas oscuras por defecto
+  loadParticles(particlesDarkConfig);
+
+  // Iniciar música en la primera interacción del usuario
+  document.body.addEventListener('click', () => {
+    if (isAudioEnabled) {
+      if (document.body.classList.contains('light-mode')) {
+        backgroundMusicLight.play();
+        bonfireSoundLight.play();
+      } else {
+        backgroundMusic.play();
+        bonfireSound.play();
+      }
+    }
+  }, { once: true });
 });
