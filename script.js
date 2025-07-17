@@ -271,4 +271,69 @@ document.addEventListener('DOMContentLoaded', function() {
   function stopGlitchAnimation() {
     // No movement logic needed here
   }
+
+  // --- Gamification ---
+  const achievements = {
+    'sobre-mi': 'Mundo Descubierto: Has iniciado tu viaje.',
+    'experiencia': 'Forjador de Leyendas: Has visto los proyectos destacados.',
+    'educacion': 'Maestro del Conocimiento: Has consultado la formación.',
+    'habilidades': 'Arsenal Desbloqueado: Has inspeccionado las competencias.',
+    'idiomas': 'Políglota: Has comprobado los idiomas dominados.'
+  };
+
+  const unlockedAchievements = new Set();
+  const totalAchievements = Object.keys(achievements).length;
+  const toastContainer = document.getElementById('toast-container');
+  const achievementPopup = document.getElementById('achievement-popup');
+  const achievementPopupClose = achievementPopup.querySelector('.close-button');
+
+  function createToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `🏆 ${message}`;
+    toastContainer.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 5000); // El toast desaparece después de 5 segundos
+  }
+
+  function showFinalAchievement() {
+    achievementPopup.classList.add('show');
+  }
+
+  achievementPopupClose.addEventListener('click', () => {
+    achievementPopup.classList.remove('show');
+  });
+
+  achievementPopup.addEventListener('click', (event) => {
+    if (event.target === achievementPopup) {
+      achievementPopup.classList.remove('show');
+    }
+  });
+
+  const achievementObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        if (achievements[sectionId] && !unlockedAchievements.has(sectionId)) {
+          unlockedAchievements.add(sectionId);
+          createToast(achievements[sectionId]);
+          observer.unobserve(entry.target); // Dejar de observar una vez desbloqueado
+
+          if (unlockedAchievements.size === totalAchievements) {
+            // Esperar un poco antes de mostrar el pop-up final
+            setTimeout(showFinalAchievement, 2000);
+          }
+        }
+      }
+    });
+  }, { threshold: 0.5 }); // Se activa cuando el 50% de la sección es visible
+
+  // Observar todas las secciones con logros
+  Object.keys(achievements).forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      achievementObserver.observe(section);
+    }
+  });
 });

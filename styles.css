@@ -1571,7 +1571,7 @@ body.light-mode .glitch-effect::after {
   display: flex;
 }
 
-.video-popup-content {
+.video-popup.show + .video-popup-content {
   position: relative;
   background-color: #000;
   margin: auto;
@@ -1585,6 +1585,12 @@ body.light-mode .glitch-effect::after {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body.light-mode .video-popup-content {
+  background-color: transparent;
+  border: none; /* Optional: remove border if it looks better */
+  box-shadow: none; /* Optional: remove shadow if it looks better */
 }
 
 @keyframes animatetop {
@@ -1727,4 +1733,65 @@ body.light-mode .glitch-effect::after {
     font-size: 25px;
     right: 15px;
   }
+}
+
+/* Achievement Toast Styles */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background-color: var(--bg-dark-hover);
+  color: var(--text-light);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-left: 5px solid var(--accent-gold);
+  animation: slideIn 0.5s ease, fadeOut 0.5s ease 4.5s forwards;
+}
+
+body.light-mode .toast {
+  background-color: var(--bg-light-header);
+  color: var(--text-dark);
+  border-left-color: var(--accent-light-mode);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+/* Final Achievement Pop-up */
+.achievement-content {
+  text-align: center;
+  color: var(--text-light);
+}
+
+body.light-mode .achievement-content {
+  color: var(--text-light);
+}
+
+.achievement-content h2 {
+  color: var(--accent-gold);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+body.light-mode .achievement-content h2 {
+  color: var(--accent-light-mode);
+}
+
+.achievement-content p {
+  font-size: 1.2rem;
 }
