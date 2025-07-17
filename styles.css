@@ -506,6 +506,10 @@ body.light-mode #theme-toggle {
   color: var(--text-dark);
 }
 
+body.light-mode .menu-toggle {
+  color: var(--text-dark);
+}
+
 #theme-toggle:hover {
   transform: rotate(15deg);
 }
@@ -918,7 +922,7 @@ body.light-mode #idiomas h2 {
 }
 
 body.light-mode .idioma-item {
-  background-color: #D9E8E6;
+  background-color: rgba(217, 232, 230, 0.85);
 }
 
 .idioma {
@@ -990,9 +994,11 @@ body.light-mode .idioma {
 /* Estilos para la sección de competencias digitales */
 #habilidades {
   background-color: var(--bg-dark-header);
-  padding: 2rem;
+  padding: 4rem 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 4rem auto; /* Espacio alrededor aumentado y centrado */
+  max-width: 1200px; /* Limitar el ancho para mejor legibilidad */
   text-align: center;
 }
 

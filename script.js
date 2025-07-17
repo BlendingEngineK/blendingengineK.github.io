@@ -134,7 +134,7 @@ if (themeToggle) {
     document.body.classList.toggle('light-mode');
 
     if (document.body.classList.contains('light-mode')) {
-      themeToggle.innerHTML = "<i class=\"fas fa-fire-extinguisher\"></i>";
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       const snowflakeImages = ['images/snowflake.png', 'images/snowflake2.png', 'images/snowflake3.png'];
       const randomIndex = Math.floor(Math.random() * snowflakeImages.length);
       const currentParticlesLightConfig = JSON.parse(JSON.stringify(particlesLightConfig)); // Deep copy
@@ -147,7 +147,7 @@ if (themeToggle) {
         bonfireSoundLight.play();
       }
     } else {
-      themeToggle.innerHTML = "<i class=\"fas fa-fire\"></i>";
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       loadParticles(particlesDarkConfig);
       backgroundMusicLight.pause();
       bonfireSoundLight.pause();
