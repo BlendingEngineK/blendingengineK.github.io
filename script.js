@@ -193,11 +193,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const projectVideo = document.getElementById('project-video');
   const comingSoonGlitch = document.getElementById('coming-soon-glitch');
   const projectPlayIcons = document.querySelectorAll('.project-play-icon');
+  const profilePhoto = document.querySelector('.photo[data-project-id="profile"]');
+  
+  const clickableElements = [...projectPlayIcons, profilePhoto];
 
-  projectPlayIcons.forEach(icon => {
-    icon.addEventListener('click', (event) => {
+  clickableElements.forEach(element => {
+    element.addEventListener('click', (event) => {
       event.stopPropagation(); // Prevent parent click events
-      const projectId = event.target.closest('[data-project-id]').dataset.projectId;
+      const projectId = element.closest('[data-project-id]').dataset.projectId;
 
       if (projectId === 'oh-my-gods') {
         projectVideo.style.display = 'none';
@@ -214,6 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
           videoFileName = 'Endless Season.mp4';
         } else if (projectId === 'experiment-ia') {
           videoFileName = 'ExperimentIA.mp4';
+        } else if (projectId === 'profile') {
+            videoFileName = 'Perfil.mp4';
         }
         projectVideo.src = `videos/${videoFileName}`;
         projectVideo.load();
@@ -222,6 +227,25 @@ document.addEventListener('DOMContentLoaded', function() {
       videoPopup.classList.add('show');
     });
   });
+
+  // Profile video preview on hover
+  const profileImg = document.getElementById('profile-img');
+  const profileVideoPreview = document.getElementById('profile-video-preview');
+
+  if (profilePhoto && profileImg && profileVideoPreview) {
+    profilePhoto.addEventListener('mouseenter', () => {
+      profileImg.style.display = 'none';
+      profileVideoPreview.style.display = 'block';
+      profileVideoPreview.play();
+    });
+
+    profilePhoto.addEventListener('mouseleave', () => {
+      profileVideoPreview.pause();
+      profileVideoPreview.currentTime = 0;
+      profileVideoPreview.style.display = 'none';
+      profileImg.style.display = 'block';
+    });
+  }
 
   closeButton.addEventListener('click', () => {
     videoPopup.classList.remove('show');
