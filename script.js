@@ -6,9 +6,10 @@ const bonfireSound = new Audio('Hoguera.wav');
 const bonfireSoundLight = new Audio('HogueraLightMode.wav');
 const backgroundMusic = new Audio('BackgroundMusic.mp3');
 const backgroundMusicLight = new Audio('BackgroundMusicLightMode.mp3');
+const katanaSlashSound = new Audio('katana-slash.wav');
 
 // --- Configuración de Audio ---
-const soundEffects = [hoverSound, clickSound, clickSoundLight];
+const soundEffects = [hoverSound, clickSound, clickSoundLight, katanaSlashSound];
 
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.3;
@@ -335,5 +336,39 @@ document.addEventListener('DOMContentLoaded', function() {
     if (section) {
       achievementObserver.observe(section);
     }
+  });
+
+  // --- Interacción de Elige tu Filo ---
+  const katanaItemsFinal = document.querySelectorAll('.katana-item');
+  const quoteContainer = document.getElementById('quote-container');
+  const quoteTextFinal = document.getElementById('language-quote-text');
+
+  const quotesFinal = {
+    es: 'El lenguaje es la hoja del entendimiento.',
+    en: 'Language is the blade of understanding.'
+  };
+
+  katanaItemsFinal.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      playSound(hoverSound);
+    });
+
+    item.addEventListener('click', () => {
+      const lang = item.dataset.lang;
+      
+      // Poner la frase correcta
+      quoteTextFinal.textContent = quotesFinal[lang];
+      
+      // Mostrar el contenedor de la frase
+      quoteContainer.classList.add('active');
+      
+      // Reproducir sonido de corte
+      playSound(katanaSlashSound);
+
+      // Opcional: ocultar la frase después de un tiempo
+      setTimeout(() => {
+        quoteContainer.classList.remove('active');
+      }, 4000); // La frase desaparece después de 4 segundos
+    });
   });
 });

@@ -882,112 +882,104 @@ body.light-mode .conocimientos li {
 
 
 /* Sección de Idiomas */
-/* Sección de Idiomas */
+/* --- Estilos para la sección de Idiomas --- */
 #idiomas {
-  background-color: var(--bg-dark-header);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+  padding: 4rem 0;
 }
 
-body.light-mode #idiomas {
-  background-color: var(--bg-light-header);
-}
-
-#idiomas h2 {
-  color: var(--accent-gold);
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-body.light-mode #idiomas h2 {
-  color: var(--accent-light-mode);
-}
-
-@media (max-width: 768px) {
-  #idiomas h2 {
-    font-size: 1.8rem;
-  }
-}
-
-.idioma-item {
+.katana-container-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: var(--bg-dark-header);
-  border-bottom: 1px solid var(--border-dark);
+  gap: 2rem; /* Espacio entre las katanas y el texto */
+  margin-top: 2rem;
+}
+
+.katana-item {
+  position: relative;
+  width: 600px; /* Ancho de la katana (aprox. 4x) */
+  height: 225px; /* Alto de la katana (aprox. 4x) */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.katana-item:hover {
+  transform: scale(1.05);
+}
+
+.katana-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.katana-item:hover .katana-img {
+  filter: drop-shadow(0 0 20px var(--accent-gold));
+}
+
+body.light-mode .katana-item:hover .katana-img {
+  filter: drop-shadow(0 0 20px var(--accent-light-mode));
+}
+
+.language-details {
+  position: absolute;
+  bottom: 10px; /* Posición del nivel */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: rgba(0,0,0,0.7);
+  padding: 5px 15px;
   border-radius: 10px;
 }
 
-body.light-mode .idioma-item {
-  background-color: rgba(217, 232, 230, 0.85);
+.katana-item:hover .language-details {
+  opacity: 1;
 }
 
-.idioma {
-  font-size: 1.2rem;
-  color: var(--text-light);
-}
-
-@media (max-width: 768px) {
-  .idioma {
-    font-size: 1rem;
-  }
-}
-
-.nivel {
-  font-size: 1.2rem;
-  color: var(--accent-gold);
+.language-level {
+  font-size: 1.3rem;
   font-weight: bold;
+  color: var(--accent-gold);
 }
 
-body.light-mode .nivel {
+body.light-mode .language-level {
   color: var(--accent-light-mode);
 }
 
-@media (max-width: 768px) {
-  .nivel {
-    font-size: 1rem;
-  }
+/* --- Estilos del Contenedor de la Frase --- */
+.quote-container {
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.5s ease-in-out;
+  width: 400px; /* Ancho del contenedor de texto */
+  text-align: center;
 }
 
-body.light-mode .nivel {
-  color: var(--accent-light-mode);
+.quote-container.active {
+  opacity: 1; /* Visible al hacer clic */
 }
 
-/* Hover (ambos modos) */
-.idioma-item:hover {
-  background-color: var(--bg-dark-hover);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-body.light-mode .idioma-item:hover {
-  background-color: #D9E8E6;
-}
-
-.idioma-item:hover .nivel {
+#language-quote-text {
+  font-family: 'Zen Brush', cursive;
+  font-size: 2.5rem;
   color: var(--text-light);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1.5rem;
+  border-radius: 15px;
+  display: inline-block;
 }
 
-body.light-mode .idioma-item:hover .nivel {
-  color: var(--accent-light-mode);
-}
-
-/* Modo claro: fondo exterior claro, items oscuros */
-body.light-mode #idiomas {
-  background-color: var(--bg-light-header);
-}
-
-body.light-mode .idioma-item {
-  background-color: var(--bg-light);
-  border-bottom: 1px solid var(--border-light);
-}
-
-body.light-mode .idioma {
+body.light-mode #language-quote-text {
   color: var(--text-dark);
+  background-color: rgba(255, 255, 255, 0.6);
 }
+
+
+
+
 
 
 
@@ -1794,4 +1786,111 @@ body.light-mode .achievement-content h2 {
 
 .achievement-content p {
   font-size: 1.2rem;
+}
+
+/* --- Estilos para la sección de Idiomas --- */
+#idiomas {
+  text-align: center;
+}
+
+.katana-duel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  perspective: 1000px; /* Para el efecto 3D */
+}
+
+.katana-container {
+  position: relative;
+  cursor: pointer;
+  width: 300px; /* Ancho fijo para el contenedor de la katana */
+}
+
+.katana-wrapper {
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.katana-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+.flag-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px; /* Tamaño de la bandera */
+  height: auto;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--accent-gold);
+  border-radius: 4px;
+}
+
+body.light-mode .flag-svg {
+  border-color: var(--accent-light-mode);
+}
+
+.language-info {
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.language-level {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--accent-gold);
+}
+
+body.light-mode .language-level {
+  color: var(--accent-light-mode);
+}
+
+.language-quote {
+  font-style: italic;
+  margin-top: 0.5rem;
+  display: none; /* Oculto hasta el clic */
+}
+
+/* --- Interacciones y Animaciones --- */
+
+.katana-container:hover .katana-wrapper {
+  transform: scale(1.1) rotateZ(-5deg); /* Efecto de inclinación al pasar el cursor */
+}
+
+.katana-container:hover .language-info {
+  opacity: 1;
+}
+
+.katana-container.active .language-quote {
+  display: block;
+}
+
+/* Animación de corte */
+.slash-animation {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 200%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #fff, transparent);
+  transform: rotate(-45deg);
+  animation: slash 0.7s ease-out forwards;
+  display: none; /* Oculto hasta que se active */
+}
+
+@keyframes slash {
+  0% {
+    left: -100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }

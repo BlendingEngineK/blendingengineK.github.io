@@ -6,6 +6,7 @@
   <title>Forjador de mundos. Guerrero del detalle.</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Brush&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -160,17 +161,29 @@
   </section>
 
   <section id="idiomas">
-    <h2>Idiomas</h2>
-    <!-- Idiomas que hablas -->
-    <div class="idioma-item">
-      <span class="idioma">Español:</span>
-      <span class="nivel">Nativo</span>
-    </div>
-    <div class="idioma-item">
-      <span class="idioma">Inglés:</span>
-      <span class="nivel">C1</span>
-    </div>
+    <h2>Elige tu Filo</h2>
+    <div class="katana-container-wrapper">
+      <!-- Katana para Español -->
+      <div class="katana-item" data-lang="es">
+        <img src="images/katana_es.png" alt="Katana para Español" class="katana-img">
+        <div class="language-details">
+          <span class="language-level">Nativo</span>
+        </div>
+      </div>
 
+      <!-- Contenedor para la Frase -->
+      <div id="quote-container" class="quote-container">
+        <p id="language-quote-text"></p>
+      </div>
+
+      <!-- Katana para Inglés -->
+      <div class="katana-item" data-lang="en">
+        <img src="images/katana_eu.png" alt="Katana para Inglés" class="katana-img">
+        <div class="language-details">
+          <span class="language-level">C1</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   
