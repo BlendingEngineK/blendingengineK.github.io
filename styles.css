@@ -266,6 +266,10 @@ section h2 {
   letter-spacing: 2px;  /* Espaciado de letras */
 }
 
+body.light-mode section h2 {
+  color: var(--text-dark); /* Asegura que el texto sea oscuro en modo claro */
+}
+
 @media (max-width: 768px) {
   section h2 {
     font-size: 2rem;
@@ -1014,82 +1018,283 @@ body.light-mode #habilidades h2 {
   }
 }
 
-/* Fondo para la sección de educación en modo claro */
-body.light-mode #habilidades {
-  background-color: var(--bg-light-header);
-}
-
-body.light-mode #proyectos {
-  background-color: var(--bg-light-header);
-}
-
-body.light-mode #certificaciones {
-  background-color: var(--bg-light-header);
-}
-
-.habilidades-container {
+.skills-cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 3rem;
 }
 
-.section-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .section-grid-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.burbujita {
-  background-color: var(--bg-dark-hover);
-  color: var(--text-light);
-  padding: 0.75rem 1.25rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  max-width: 250px;
-  width: auto;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .burbujita {
-    font-size: 0.9rem;
-  }
-}
-
-.burbujita:hover {
-  transform: scale(1.15);
-  background-color: var(--accent-gold);
-  box-shadow: 0 0 20px var(--accent-gold);
+.skill-card {
+  width: 250px;
+  height: 350px;
+  perspective: 1000px; /* Para el efecto 3D */
   cursor: pointer;
 }
 
-body.light-mode .burbujita:hover {
-  color: var(--text-dark); /* Texto oscuro en modo claro al hacer hover */
-  background-color: var(--accent-light-mode);
-  box-shadow: 0 0 20px var(--accent-light-mode);
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación de volteo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-body.light-mode .burbujita:hover {
-  color: var(--text-dark); /* Texto oscuro en modo claro al hacer hover */
-  background-color: var(--accent-light-mode);
+.skill-card:hover .card-inner {
+  transform: rotateY(180deg);
 }
 
-@media (max-width: 768px) {
-  .burbujita {
-    font-size: 0.9rem;
-    max-width: 200px;
-  }
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--bg-dark-hover), var(--bg-dark-hover-alt));
+  color: var(--text-light);
 }
+
+body.light-mode .card-front, body.light-mode .card-back {
+  background: linear-gradient(135deg, #E0F2F1, #B2DFDB); /* Tonos claros de verde azulado */
+  color: var(--text-dark);
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  text-align: left;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.skill-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--accent-gold);
+}
+
+body.light-mode .skill-card h3 {
+  color: var(--accent-light-mode);
+}
+
+.skill-card i {
+  font-size: 4rem;
+  color: var(--accent-red);
+}
+
+body.light-mode .skill-card i {
+  color: var(--accent-light-mode);
+}
+
+.card-back h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--accent-gold);
+}
+
+body.light-mode .card-back h4 {
+  color: var(--accent-light-mode);
+}
+
+.card-back p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.card-back ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.card-back ul li {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  color: var(--text-light-alt);
+}
+
+body.light-mode .card-back ul li {
+  color: var(--text-dark);
+}
+
+.invoke-button {
+  background: linear-gradient(45deg, var(--accent-gold), var(--accent-red));
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: auto; /* Empuja el botón hacia abajo */
+}
+
+body.light-mode .invoke-button {
+  background: linear-gradient(45deg, var(--accent-light-mode), var(--accent-red));
+}
+
+.invoke-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-gold);
+}
+
+body.light-mode .invoke-button:hover {
+  box-shadow: 0 0 10px var(--accent-light-mode);
+}
+
+/* AI Card Specific Styles */
+.ai-card .card-front {
+  background: linear-gradient(135deg, #4B0082, #8A2BE2); /* Índigo a Azul Violeta */
+}
+
+body.light-mode .ai-card .card-front {
+  background: linear-gradient(135deg, #87CEEB, #ADD8E6); /* Azul cielo a Azul claro */
+}
+
+.ai-card .card-front h3 {
+  color: #FFD700; /* Dorado */
+}
+
+body.light-mode .ai-card .card-front h3 {
+  color: #00008B; /* Azul oscuro */
+}
+
+.ai-icons-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ai-icon {
+  position: absolute;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.7); /* Blanco semitransparente */
+  animation: float 10s infinite ease-in-out alternate;
+}
+
+body.light-mode .ai-icon {
+  color: rgba(0, 0, 0, 0.5); /* Negro semitransparente */
+}
+
+/* Floating animation for AI icons */
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -10px); }
+  50% { transform: translate(-10px, 10px); }
+  75% { transform: translate(10px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+.ai-icon:nth-child(1) { animation-delay: 0s; top: 10%; left: 10%; }
+.ai-icon:nth-child(2) { animation-delay: 2s; top: 70%; left: 20%; }
+.ai-icon:nth-child(3) { animation-delay: 4s; top: 20%; left: 80%; }
+.ai-icon:nth-child(4) { animation-delay: 6s; top: 80%; left: 70%; }
+.ai-icon:nth-child(5) { animation-delay: 8s; top: 40%; left: 40%; }
+
+/* Invocation Pop-up Styles */
+.invocation-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.invocation-popup.active {
+  display: flex;
+}
+
+.invocation-content {
+  background: var(--bg-dark-header);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 30px var(--accent-gold);
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.light-mode .invocation-content {
+  background: var(--bg-light-header);
+  box-shadow: 0 0 30px var(--accent-light-mode);
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-invocation {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+body.light-mode .close-invocation {
+  color: var(--text-dark);
+}
+
+.close-invocation:hover {
+  color: var(--accent-red);
+}
+
+.invocation-content h3 {
+  font-size: 2rem;
+  color: var(--accent-gold);
+  margin-bottom: 15px;
+}
+
+body.light-mode .invocation-content h3 {
+  color: var(--accent-light-mode);
+}
+
+.invocation-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.invocation-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.invocation-content ul li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--text-light-alt);
+}
+
+body.light-mode .invocation-content ul li {
+  color: var(--text-dark);
+}
+
 
 /* Estilos para la sección de proyectos */
 #proyectos {
@@ -1563,7 +1768,7 @@ body.light-mode .glitch-effect::after {
   display: flex;
 }
 
-.video-popup.show + .video-popup-content {
+.video-popup.show .video-popup-content {
   position: relative;
   background-color: #000;
   margin: auto;

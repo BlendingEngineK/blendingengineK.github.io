@@ -141,22 +141,307 @@
 
   <section id="habilidades">
     <h2>Competencias Digitales</h2>
-    <!-- Tus skills -->
-    <div class="habilidades-container">
-      <div class="burbujita">Unreal Engine</div>
-      <div class="burbujita">Unity</div>
-      <div class="burbujita">C++</div>
-      <div class="burbujita">C#</div>
-      <div class="burbujita">Blueprints (Unreal)</div>
-      <div class="burbujita">Python</div>
-      <div class="burbujita">Diseño de Mecánicas</div>
-      <div class="burbujita">Programación de Gameplay</div>
-      <div class="burbujita">Diseño de Sistemas de Juego</div>
-      <div class="burbujita">Blender</div>
-      <div class="burbujita">Krita</div>
-      <div class="burbujita">Git</div>
-      <div class="burbujita">Microsoft Teams</div>
-      <div class="burbujita">Herramientas de IA (Midjourney, etc.)</div>
+    <div class="skills-cards-container">
+
+      <!-- Unreal Engine Card -->
+      <div class="skill-card" data-skill="unreal-engine">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Unreal Engine</h3>
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <div class="card-back">
+            <h4>Unreal Engine</h4>
+            <p>Experiencia en desarrollo de videojuegos y entornos interactivos.</p>
+            <ul>
+              <li>Blueprints</li>
+              <li>C++</li>
+              <li>Niagara VFX</li>
+              <li>MetaHuman</li>
+            </ul>
+            <button class="invoke-button" data-skill="unreal-engine">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unity Card -->
+      <div class="skill-card" data-skill="unity">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Unity</h3>
+            <i class="fas fa-cube"></i>
+          </div>
+          <div class="card-back">
+            <h4>Unity</h4>
+            <p>Desarrollo de juegos 2D/3D, UI y sistemas de juego.</p>
+            <ul>
+              <li>C# Scripting</li>
+              <li>UI Toolkit</li>
+              <li>Mecanim</li>
+            </ul>
+            <button class="invoke-button" data-skill="unity">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- C++ Card -->
+      <div class="skill-card" data-skill="cpp">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>C++</h3>
+            <i class="fas fa-file-code"></i>
+          </div>
+          <div class="card-back">
+            <h4>C++</h4>
+            <p>Programación de bajo nivel y optimización para motores de juego.</p>
+            <ul>
+              <li>POO</li>
+              <li>Estructuras de Datos</li>
+              <li>Algoritmos</li>
+            </ul>
+            <button class="invoke-button" data-skill="cpp">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- C# Card -->
+      <div class="skill-card" data-skill="csharp">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>C#</h3>
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="card-back">
+            <h4>C#</h4>
+            <p>Lenguaje principal para scripting en Unity y desarrollo de lógica de juego.</p>
+            <ul>
+              <li>Unity API</li>
+              <li>Eventos y Delegados</li>
+              <li>Corrutinas</li>
+            </ul>
+            <button class="invoke-button" data-skill="csharp">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blueprints Card -->
+      <div class="skill-card" data-skill="blueprints">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Blueprints</h3>
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <div class="card-back">
+            <h4>Blueprints (Unreal)</h4>
+            <p>Programación visual para prototipado rápido y lógica de juego en Unreal Engine.</p>
+            <ul>
+              <li>Lógica de Gameplay</li>
+              <li>Interfaces</li>
+              <li>Macros</li>
+            </ul>
+            <button class="invoke-button" data-skill="blueprints">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python Card -->
+      <div class="skill-card" data-skill="python">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Python</h3>
+            <i class="fab fa-python"></i>
+          </div>
+          <div class="card-back">
+            <h4>Python</h4>
+            <p>Scripting, automatización y herramientas para desarrollo de juegos.</p>
+            <ul>
+              <li>Automatización</li>
+              <li>Análisis de Datos</li>
+              <li>Herramientas de Pipeline</li>
+            </ul>
+            <button class="invoke-button" data-skill="python">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diseño de Mecánicas Card -->
+      <div class="skill-card" data-skill="game-mechanics">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Diseño de Mecánicas</h3>
+            <i class="fas fa-dice"></i>
+          </div>
+          <div class="card-back">
+            <h4>Diseño de Mecánicas</h4>
+            <p>Creación de reglas y sistemas de juego atractivos y equilibrados.</p>
+            <ul>
+              <li>Prototipado</li>
+              <li>Balanceo</li>
+              <li>Iteración</li>
+            </ul>
+            <button class="invoke-button" data-skill="game-mechanics">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programación de Gameplay Card -->
+      <div class="skill-card" data-skill="gameplay-programming">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Programación de Gameplay</h3>
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="card-back">
+            <h4>Programación de Gameplay</h4>
+            <p>Implementación de la lógica central y la interactividad del juego.</p>
+            <ul>
+              <li>Control de Personajes</li>
+              <li>Sistemas de Combate</li>
+              <li>IA de Enemigos</li>
+            </ul>
+            <button class="invoke-button" data-skill="gameplay-programming">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diseño de Sistemas de Juego Card -->
+      <div class="skill-card" data-skill="game-systems">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Diseño de Sistemas</h3>
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="card-back">
+            <h4>Diseño de Sistemas de Juego</h4>
+            <p>Conceptualización y estructuración de la economía, progresión y otros sistemas.</p>
+            <ul>
+              <li>Economía del Juego</li>
+              <li>Progresión</li>
+              <li>Gacha Systems</li>
+            </ul>
+            <button class="invoke-button" data-skill="game-systems">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blender Card -->
+      <div class="skill-card" data-skill="blender">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Blender</h3>
+            <i class="fas fa-cube"></i>
+          </div>
+          <div class="card-back">
+            <h4>Blender</h4>
+            <p>Modelado 3D, texturizado, rigging y animación para assets de juego.</p>
+            <ul>
+              <li>Modelado Hard Surface</li>
+              <li>Esculpido</li>
+              <li>Renderizado</li>
+            </ul>
+            <button class="invoke-button" data-skill="blender">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Krita Card -->
+      <div class="skill-card" data-skill="krita">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Krita</h3>
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div class="card-back">
+            <h4>Krita</h4>
+            <p>Creación de arte 2D, texturas y concept art para videojuegos.</p>
+            <ul>
+              <li>Pintura Digital</li>
+              <li>Concept Art</li>
+              <li>Texturizado</li>
+            </ul>
+            <button class="invoke-button" data-skill="krita">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Git Card -->
+      <div class="skill-card" data-skill="git">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Git</h3>
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <div class="card-back">
+            <h4>Git</h4>
+            <p>Control de versiones para colaboración en equipos de desarrollo.</p>
+            <ul>
+              <li>Repositorios</li>
+              <li>Ramas</li>
+              <li>Merge/Rebase</li>
+            </ul>
+            <button class="invoke-button" data-skill="git">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Microsoft Teams Card -->
+      <div class="skill-card" data-skill="microsoft-teams">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Microsoft Teams</h3>
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="card-back">
+            <h4>Microsoft Teams</h4>
+            <p>Herramienta de comunicación y colaboración para equipos de trabajo.</p>
+            <ul>
+              <li>Comunicación</li>
+              <li>Gestión de Proyectos</li>
+              <li>Reuniones</li>
+            </ul>
+            <button class="invoke-button" data-skill="microsoft-teams">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Tools Card (Special) -->
+      <div class="skill-card ai-card" data-skill="ai-tools">
+        <div class="card-inner">
+          <div class="card-front">
+            <h3>Herramientas de IA</h3>
+            <div class="ai-icons-container">
+              <i class="ai-icon fas fa-comments" style="--i:1;" title="ChatGPT"></i>
+              <i class="ai-icon fas fa-gem" style="--i:2;" title="Gemini"></i>
+              <i class="ai-icon fas fa-palette" style="--i:3;" title="Midjourney"></i>
+              <i class="ai-icon fas fa-book" style="--i:4;" title="NotebookLM"></i>
+              <i class="ai-icon fas fa-music" style="--i:5;" title="Suno"></i>
+            </div>
+          </div>
+          <div class="card-back">
+            <h4>Herramientas de IA</h4>
+            <p>Dominio de herramientas de IA generativa para arte, texto y desarrollo.</p>
+            <ul>
+              <li>ChatGPT</li>
+              <li>Gemini</li>
+              <li>Midjourney</li>
+              <li>NotebookLM</li>
+              <li>Suno</li>
+            </ul>
+            <button class="invoke-button" data-skill="ai-tools">Invocar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Invocation Pop-up -->
+    <div id="invocation-popup" class="invocation-popup">
+      <div class="invocation-content">
+        <span class="close-invocation">&times;</span>
+        <h3 id="invoked-skill-title"></h3>
+        <p id="invoked-skill-description"></p>
+        <div id="invoked-skill-details"></div>
+      </div>
     </div>
   </section>
 

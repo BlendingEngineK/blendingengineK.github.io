@@ -65,21 +65,19 @@ const particlesLightConfig = {
 // --- Funciones ---
 function playSound(sound) {
   if (isAudioEnabled) {
-    const shortSounds = [hoverSound, clickSound, clickSoundLight];
-    if (shortSounds.includes(sound)) {
-      const isAnotherSoundInEarlyPlay = shortSounds.some(s => !s.paused && s.currentTime < 2);
-      if (isAnotherSoundInEarlyPlay) {
-        return;
-      }
-    }
+    // Pausar todos los demás sonidos cortos inmediatamente
     soundEffects.forEach(effect => {
-      if (effect !== sound) {
+      if (effect !== sound) { // No pausar el sonido que estamos a punto de reproducir
         effect.pause();
         effect.currentTime = 0;
       }
     });
+
+    // Siempre reproducir el sonido solicitado
     sound.currentTime = 0;
-    sound.play();
+    sound.play().catch(error => {
+        console.error("Error playing sound:", sound.src, error);
+    });
   }
 }
 
@@ -198,71 +196,83 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const clickableElements = [...projectPlayIcons, profilePhoto];
 
-  clickableElements.forEach(element => {
-    element.addEventListener('click', (event) => {
-      event.stopPropagation(); // Prevent parent click events
-      const projectId = element.closest('[data-project-id]').dataset.projectId;
+  if (videoPopup && closeButton && projectVideo && comingSoonGlitch && profilePhoto) {
+    clickableElements.forEach(element => {
+      if (element) { 
+        element.addEventListener('click', (event) => {
+          event.stopPropagation(); 
+          const projectId = element.closest('[data-project-id]').dataset.projectId;
 
-      if (projectId === 'oh-my-gods') {
-        projectVideo.style.display = 'none';
-        comingSoonGlitch.style.display = 'flex';
-        startGlitchAnimation();
-      } else {
-        projectVideo.style.display = 'block';
-        comingSoonGlitch.style.display = 'none';
-        stopGlitchAnimation();
-        let videoFileName;
-        if (projectId === 'cyber-runner') {
-          videoFileName = 'Cyber Runner.mp4';
-        } else if (projectId === 'endless-season') {
-          videoFileName = 'Endless Season.mp4';
-        } else if (projectId === 'experiment-ia') {
-          videoFileName = 'ExperimentIA.mp4';
-        } else if (projectId === 'profile') {
-            videoFileName = 'Perfil.mp4';
-        }
-        projectVideo.src = `videos/${videoFileName}`;
-        projectVideo.load();
-        projectVideo.play();
+          if (projectId === 'oh-my-gods') {
+            projectVideo.style.display = 'none';
+            comingSoonGlitch.style.display = 'flex';
+            // startGlitchAnimation(); // No definida en este scope
+          } else {
+            projectVideo.style.display = 'block';
+            comingSoonGlitch.style.display = 'none';
+            // stopGlitchAnimation(); // No definida en este scope
+            let videoFileName;
+            if (projectId === 'cyber-runner') {
+              videoFileName = 'Cyber Runner.mp4';
+            } else if (projectId === 'endless-season') {
+              videoFileName = 'Endless Season.mp4';
+            } else if (projectId === 'experiment-ia') {
+              videoFileName = 'ExperimentIA.mp4';
+            } else if (projectId === 'profile') {
+                videoFileName = 'Perfil.mp4';
+            }
+            projectVideo.src = `videos/${videoFileName}`;
+            projectVideo.muted = true; // Asegurar que esté silenciado
+            projectVideo.setAttribute('playsinline', ''); // Asegurar playsinline
+            console.log('Setting video src to:', projectVideo.src);
+            projectVideo.load();
+            console.log('Video loaded, attempting to play...');
+            projectVideo.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
+          }
+          videoPopup.classList.add('show');
+        });
       }
-      videoPopup.classList.add('show');
-    });
-  });
-
-  // Profile video preview on hover
-  const profileImg = document.getElementById('profile-img');
-  const profileVideoPreview = document.getElementById('profile-video-preview');
-
-  if (profilePhoto && profileImg && profileVideoPreview) {
-    profilePhoto.addEventListener('mouseenter', () => {
-      profileImg.style.display = 'none';
-      profileVideoPreview.style.display = 'block';
-      profileVideoPreview.play();
     });
 
-    profilePhoto.addEventListener('mouseleave', () => {
-      profileVideoPreview.pause();
-      profileVideoPreview.currentTime = 0;
-      profileVideoPreview.style.display = 'none';
-      profileImg.style.display = 'block';
-    });
-  }
+    // Profile video preview on hover
+    const profileImg = document.getElementById('profile-img');
+    const profileVideoPreview = document.getElementById('profile-video-preview');
 
-  closeButton.addEventListener('click', () => {
-    videoPopup.classList.remove('show');
-    projectVideo.pause();
-    projectVideo.currentTime = 0;
-    stopGlitchAnimation();
-  });
+    if (profilePhoto && profileImg && profileVideoPreview) {
+      profilePhoto.addEventListener('mouseenter', () => {
+        profileImg.style.display = 'none';
+        profileVideoPreview.style.display = 'block';
+        profileVideoPreview.play();
+      });
 
-  videoPopup.addEventListener('click', (event) => {
-    if (event.target === videoPopup) {
+      profilePhoto.addEventListener('mouseleave', () => {
+        profileVideoPreview.pause();
+        profileVideoPreview.currentTime = 0;
+        profileVideoPreview.style.display = 'none';
+        profileImg.style.display = 'block';
+      });
+    }
+
+    closeButton.addEventListener('click', () => {
       videoPopup.classList.remove('show');
       projectVideo.pause();
       projectVideo.currentTime = 0;
-      stopGlitchAnimation();
-    }
-  });
+      // stopGlitchAnimation(); // No definida en este scope
+    });
+
+    videoPopup.addEventListener('click', (event) => {
+      if (event.target === videoPopup) {
+        videoPopup.classList.remove('show');
+        projectVideo.pause();
+        projectVideo.currentTime = 0;
+        // stopGlitchAnimation(); // No definida en este scope
+      }
+    });
+  } else {
+    console.error("One or more video popup elements not found.");
+  }
 
   // Glitch animation for "Próximamente"
   function startGlitchAnimation() {
@@ -338,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // --- Interacción de Elige tu Filo ---
+  // --- Interacción de Elige tu Filo (Idiomas) ---
   const katanaItemsFinal = document.querySelectorAll('.katana-item');
   const quoteContainer = document.getElementById('quote-container');
   const quoteTextFinal = document.getElementById('language-quote-text');
@@ -348,27 +358,149 @@ document.addEventListener('DOMContentLoaded', function() {
     en: 'Language is the blade of understanding.'
   };
 
-  katanaItemsFinal.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      playSound(hoverSound);
+  if (katanaItemsFinal.length > 0 && quoteContainer && quoteTextFinal) {
+    katanaItemsFinal.forEach(item => {
+      if (item) {
+        item.addEventListener('mouseover', () => {
+          playSound(hoverSound);
+        });
+
+        item.addEventListener('click', () => {
+          const lang = item.dataset.lang;
+          
+          quoteTextFinal.textContent = quotesFinal[lang];
+          
+          quoteContainer.classList.add('active');
+          
+          playSound(katanaSlashSound);
+
+          setTimeout(() => {
+            quoteContainer.classList.remove('active');
+          }, 4000); 
+        });
+      }
+    });
+  } else {
+    console.error("One or more language section elements not found.");
+  }
+
+  // --- Interacción de las Cartas de Habilidades ---
+  const skillCards = document.querySelectorAll('.skill-card');
+  const invocationPopup = document.getElementById('invocation-popup');
+  const closeInvocationButton = document.querySelector('.close-invocation');
+  const invokedSkillTitle = document.getElementById('invoked-skill-title');
+  const invokedSkillDescription = document.getElementById('invoked-skill-description');
+  const invokedSkillDetails = document.getElementById('invoked-skill-details');
+
+  if (skillCards.length > 0 && invocationPopup && closeInvocationButton && invokedSkillTitle && invokedSkillDescription && invokedSkillDetails) {
+    const skillData = {
+      'unreal-engine': {
+        title: 'Unreal Engine',
+        description: 'Experiencia en desarrollo de videojuegos y entornos interactivos.',
+        details: ['Blueprints', 'C++', 'Niagara VFX', 'MetaHuman']
+      },
+      'unity': {
+        title: 'Unity',
+        description: 'Desarrollo de juegos 2D/3D, UI y sistemas de juego.',
+        details: ['C# Scripting', 'UI Toolkit', 'Mecanim']
+      },
+      'cpp': {
+        title: 'C++',
+        description: 'Programación de bajo nivel y optimización para motores de juego.',
+        details: ['POO', 'Estructuras de Datos', 'Algoritmos']
+      },
+      'csharp': {
+        title: 'C#',
+        description: 'Lenguaje principal para scripting en Unity y desarrollo de lógica de juego.',
+        details: ['Unity API', 'Eventos y Delegados', 'Corrutinas']
+      },
+      'blueprints': {
+        title: 'Blueprints',
+        description: 'Programación visual para prototipado rápido y lógica de juego en Unreal Engine.',
+        details: ['Lógica de Gameplay', 'Interfaces', 'Macros']
+      },
+      'python': {
+        title: 'Python',
+        description: 'Scripting, automatización y herramientas para desarrollo de juegos.',
+        details: ['Automatización', 'Análisis de Datos', 'Herramientas de Pipeline']
+      },
+      'game-mechanics': {
+        title: 'Diseño de Mecánicas',
+        description: 'Creación de reglas y sistemas de juego atractivos y equilibrados.',
+        details: ['Prototipado', 'Balanceo', 'Iteración']
+      },
+      'gameplay-programming': {
+        title: 'Programación de Gameplay',
+        description: 'Implementación de la lógica central y la interactividad del juego.',
+        details: ['Control de Personajes', 'Sistemas de Combate', 'IA de Enemigos']
+      },
+      'game-systems': {
+        title: 'Diseño de Sistemas de Juego',
+        description: 'Conceptualización y estructuración de la economía, progresión y otros sistemas.',
+        details: ['Economía del Juego', 'Progresión', 'Gacha Systems']
+      },
+      'blender': {
+        title: 'Blender',
+        description: 'Modelado 3D, texturizado, rigging y animación para assets de juego.',
+        details: ['Modelado Hard Surface', 'Esculpido', 'Renderizado']
+      },
+      'krita': {
+        title: 'Krita',
+        description: 'Creación de arte 2D, texturas y concept art para videojuegos.',
+        details: ['Pintura Digital', 'Concept Art', 'Texturizado']
+      },
+      'git': {
+        title: 'Git',
+        description: 'Control de versiones para colaboración en equipos de desarrollo.',
+        details: ['Repositorios', 'Ramas', 'Merge/Rebase']
+      },
+      'microsoft-teams': {
+        title: 'Microsoft Teams',
+        description: 'Herramienta de comunicación y colaboración para equipos de trabajo.',
+        details: ['Comunicación', 'Gestión de Proyectos', 'Reuniones']
+      },
+      'ai-tools': {
+        title: 'Herramientas de IA',
+        description: 'Dominio de herramientas de IA generativa para arte, texto y desarrollo.',
+        details: ['ChatGPT', 'Gemini', 'Midjourney', 'NotebookLM', 'Suno']
+      }
+    };
+
+    skillCards.forEach(card => {
+      if (card) {
+        const invokeButton = card.querySelector('.invoke-button');
+        if (invokeButton) {
+          invokeButton.addEventListener('click', (event) => {
+            event.stopPropagation(); 
+            const skillId = card.dataset.skill;
+            const data = skillData[skillId];
+
+            if (data) {
+              invokedSkillTitle.textContent = data.title;
+              invokedSkillDescription.textContent = data.description;
+              invokedSkillDetails.innerHTML = '';
+              data.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                invokedSkillDetails.appendChild(li);
+              });
+              invocationPopup.classList.add('active');
+            }
+          });
+        }
+      }
     });
 
-    item.addEventListener('click', () => {
-      const lang = item.dataset.lang;
-      
-      // Poner la frase correcta
-      quoteTextFinal.textContent = quotesFinal[lang];
-      
-      // Mostrar el contenedor de la frase
-      quoteContainer.classList.add('active');
-      
-      // Reproducir sonido de corte
-      playSound(katanaSlashSound);
-
-      // Opcional: ocultar la frase después de un tiempo
-      setTimeout(() => {
-        quoteContainer.classList.remove('active');
-      }, 4000); // La frase desaparece después de 4 segundos
+    closeInvocationButton.addEventListener('click', () => {
+      invocationPopup.classList.remove('active');
     });
-  });
+
+    invocationPopup.addEventListener('click', (event) => {
+      if (event.target === invocationPopup) {
+        invocationPopup.classList.remove('active');
+      }
+    });
+  } else {
+    console.error("One or more skill card elements not found.");
+  }
 });
