@@ -1,25 +1,26 @@
 /* Variables de color */
 :root {
     --primary-dark: #1a1a1a; /* Casi negro, para fondos y texto principal */
-    --secondary-dark: #333333; /* Gris oscuro para secciones */
-    --accent-gold: #FFD700; /* Dorado vibrante */
-    --accent-red: #DC143C; /* Rojo carmesí */
+    --secondary-dark: #2c2c2c; /* Gris oscuro ligeramente más claro */
+    --accent-bronze: #CD7F32; /* Bronce metálico */
+    --accent-crimson: #8B0000; /* Rojo carmesí oscuro */
     --text-light: #f0f0f0; /* Blanco roto para texto sobre fondos oscuros */
     --text-dark: #0a0a0a; /* Negro para texto sobre fondos claros */
-    --border-color: #555555; /* Gris para bordes sutiles */
+    --border-color: #444444; /* Gris para bordes sutiles */
     --shadow-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.4; /* Reducido */
+    line-height: 1.5; /* Aumentado */
     color: var(--text-dark); /* Por defecto, texto oscuro para impresión */
     background-color: #ffffff; /* Fondo blanco para impresión */
     margin: 0;
     padding: 0;
     -webkit-print-color-adjust: exact; /* Asegura que los colores se impriman exactamente */
     print-color-adjust: exact;
+    font-size: 10.5pt; /* Aumentado */
 }
 
 .cv-container {
@@ -43,7 +44,7 @@ body {
     left: -50px;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent-bronze) 0%, transparent 70%);
     opacity: 0.05;
     border-radius: 50%;
     z-index: 0;
@@ -56,7 +57,7 @@ body {
     right: -50px;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, var(--accent-red) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent-crimson) 0%, transparent 70%);
     opacity: 0.05;
     border-radius: 50%;
     z-index: 0;
@@ -73,14 +74,14 @@ body {
     margin: 0;
     position: relative;
     z-index: 1;
-    border-bottom: 4px solid var(--accent-gold); /* Reducido */
+    border-bottom: 4px solid var(--accent-bronze); /* Reducido */
 }
 
 .cv-header .header-left h1 {
     font-family: 'Cinzel', serif;
     font-size: 2.4em; /* Reducido */
     margin-bottom: 0.1em;
-    color: var(--accent-gold);
+    color: var(--accent-bronze);
 }
 
 .cv-header .header-left h2 {
@@ -99,7 +100,7 @@ body {
 
 .cv-header .header-right p i {
     margin-right: 0.5em;
-    color: var(--accent-red);
+    color: var(--accent-crimson);
 }
 
 .cv-header .header-right a {
@@ -113,8 +114,8 @@ body {
 
 /* Secciones */
 .cv-section {
-    margin-bottom: 0.2cm; /* Reducido */
-    padding: 0.15cm 0; /* Reducido */
+    margin-bottom: 0; /* Reducido */
+    padding: 0.1cm 0; /* Reducido */
     position: relative;
     z-index: 1;
     page-break-inside: avoid;
@@ -124,7 +125,7 @@ body {
     font-family: 'Cinzel', serif;
     font-size: 1.6em; /* Reducido */
     color: var(--primary-dark);
-    margin-bottom: 0.3cm; /* Reducido */
+    margin-bottom: 0.2cm; /* Reducido */
     position: relative;
     padding-bottom: 0.2cm;
 }
@@ -136,7 +137,7 @@ body {
     bottom: 0;
     width: 50px;
     height: 3px;
-    background: linear-gradient(to right, var(--accent-gold), var(--accent-red));
+    background: linear-gradient(to right, var(--accent-bronze), var(--accent-crimson));
 }
 
 /* Sección Sobre mí */
@@ -148,9 +149,17 @@ body {
 
 /* Proyectos */
 .experience-item {
-    margin-bottom: 0.3cm;
+    margin-bottom: 0.15cm; /* Reducido */
     page-break-inside: avoid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    padding: 0.2cm;
 }
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(205, 127, 50, 0.2); /* Sutil brillo bronce */
+}
+
 .experience-item h4 {
     font-size: 1.1em;
     margin-bottom: 0.05em;
@@ -175,13 +184,13 @@ body {
 .cv-main-content {
     display: flex;
     flex-direction: column;
-    gap: 0.3cm; /* Reducido */
+    gap: 0.1cm; /* Reducido */
 }
 
 .cv-columns-wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 0.4cm; /* Reducido */
+    gap: 0.2cm; /* Reducido */
 }
 
 .cv-left-column {
@@ -190,105 +199,86 @@ body {
 }
 
 .cv-right-column {
-    /* Estilos específicos para la columna derecha */
+    display: flex;
+    flex-direction: column;
+    gap: 0.1cm; /* Reducido */
 }
 
 /* Habilidades */
-.skills {
-    flex-grow: 1;
-    flex-shrink: 1;
+.skills-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2cm; /* Reducido */
+}
+
+.skill-category h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2em;
+    color: var(--primary-dark);
+    margin-bottom: 0.2cm;
+    padding-bottom: 0.1cm;
+    border-bottom: 2px solid var(--accent-red);
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Reducido */
-    gap: 0.4cm; /* Reducido */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.3cm;
 }
 
 .skill-item {
     background-color: var(--secondary-dark);
     color: var(--text-light);
-    padding: 0.25cm; /* Reducido */
-    border-radius: 6px; /* Reducido */
+    padding: 0.3cm;
+    border-radius: 6px;
     text-align: center;
     box-shadow: 0 2px 8px var(--shadow-color);
-    border-bottom: 2px solid var(--accent-red); /* Reducido */
+    border-left: 3px solid var(--accent-bronze);
+    display: flex;
+    align-items: center;
+    gap: 0.3cm;
+    font-size: 0.85em;
 }
 
 .skill-item i {
-    font-size: 1.2em; /* Reducido */
-    color: var(--accent-gold);
-    margin-bottom: 0.1em;
-}
-
-.skill-item h4 {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7em; /* Reducido */
-    margin-bottom: 0.2em;
-    color: var(--accent-gold);
-}
-
-.skill-item ul {
-    list-style: none;
-    padding: 0;
-    font-size: 0.8em; /* Reducido */
-}
-
-.skill-item ul li {
-    margin-bottom: 0;
-}
-
-.skill-item.ai-tools-skill {
-    border-bottom-color: var(--accent-gold);
-}
-
-.skill-item.ai-tools-skill i {
-    color: var(--accent-red);
+    font-size: 1.3em;
+    color: var(--accent-bronze);
 }
 
 /* Idiomas */
 .languages {
     margin-top: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-    max-width: 200px;
 }
 
-.katana-container-cv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3cm; /* Reducido */
-    margin-top: 0.3cm;
-}
-
-.katana-item-cv {
-    position: relative;
-    width: 150px; /* Reducido */
-    height: 56.25px; /* Reducido */
-    text-align: center;
+.language-banners-container {
     display: flex;
     flex-direction: column;
+    gap: 0.3cm;
+    margin-top: 0.2cm;
+}
+
+.language-banner {
+    background: var(--secondary-dark);
+    color: var(--text-light);
+    padding: 0.4cm;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    border-left: 4px solid var(--accent-crimson);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
-.katana-img-cv {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transform: rotate(90deg);
+.language-banner .language-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--accent-bronze);
 }
 
-.language-level-cv {
-    font-size: 0.9em; /* Reducido */
-    font-weight: bold;
-    color: var(--accent-gold);
-    margin-top: 0.1em;
-    position: static;
-    transform: none;
-    background: none;
-    padding: 0;
-    border-radius: 0;
+.language-banner .language-level {
+    font-size: 0.9em;
+    font-style: italic;
 }
 
 /* Educación */
@@ -309,7 +299,8 @@ body {
     body {
         margin: 0;
         padding: 0;
-        font-size: 9.5pt; /* Ajuste global de fuente */
+        font-size: 9.8pt; /* Aumentado para legibilidad */
+        line-height: 1.45; /* Espaciado de línea más cómodo */
     }
 
     .cv-container {
@@ -321,52 +312,112 @@ body {
     }
 
     .cv-header {
-        margin: 0;
-        padding: 0.2cm 0.3cm; /* Reducido */
+        padding: 0.2cm 0.3cm;
+        margin-bottom: 0.2cm;
     }
 
+    /* Reintroduciendo espaciado vertical controlado */
     .cv-section {
         padding: 0.1cm 0.3cm;
-        margin-bottom: 0.15cm; /* Reducido */
+        margin-bottom: 0.2cm; /* Espacio entre secciones */
+        page-break-inside: avoid; /* Intentar mantener secciones juntas */
     }
 
-    .cv-main-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2cm; /* Reducido */
-        padding: 0 0.3cm;
+    .cv-section h3 {
+        font-size: 1.5em;
+        margin-bottom: 0.2cm;
+        padding-bottom: 0.1cm;
     }
 
-    .cv-columns-wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 0.2cm; /* Reducido */
+    .experience-item {
+        margin-bottom: 0.15cm;
+    }
+    
+    .experience-item h4, .education-item h4 {
+        font-size: 1.05em;
+    }
+
+    .experience-item ul {
+        margin-top: 0.1cm;
+    }
+
+    .experience-item ul li {
+        margin-bottom: 0.05cm; /* Espacio mínimo entre elementos de la lista */
+    }
+
+    .cv-main-content, .cv-columns-wrapper, .cv-right-column, .skills-categories {
+        gap: 0.1cm;
     }
 
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-        gap: 0.15cm; /* Reducido */
+        gap: 0.15cm;
     }
 
     .skill-item {
-        padding: 0.15cm; /* Reducido */
-        min-height: 45px; /* Reducido */
+        padding: 0.15cm;
+        font-size: 0.8em;
     }
 
-    .skill-item i {
-        font-size: 1.1em; /* Reducido */
+    .language-banner {
+        padding: 0.2cm;
+    }
+    
+    /* Ocultar elementos no esenciales */
+    .cv-container::before, .cv-container::after, .experience-item:hover {
+        display: none;
     }
 
-    .skill-item h4 {
-        font-size: 0.65em; /* Reducido */
+    .cv-header .header-right a[href*="blendingenginek.github.io"]::after {
+        content: " (https://blendingenginek.github.io)";
+        color: var(--text-dark);
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+}
+
+/* Estilos para las nuevas secciones */
+.design-philosophy p {
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: justify;
+    color: #555;
+    border-left: 3px solid var(--accent-bronze);
+    padding-left: 0.3cm;
+    margin-top: 0.2cm;
+}
+
+.ai-tools ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.2cm;
+}
+
+.ai-tools ul li {
+    background-color: var(--secondary-dark);
+    color: var(--text-light);
+    padding: 0.25cm;
+    border-radius: 4px;
+    margin-bottom: 0.15cm;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    gap: 0.3cm;
+}
+
+.ai-tools ul li i {
+    color: var(--accent-crimson);
+}
+
+@media print {
+    .cv-header .header-right a[href*="blendingenginek.github.io"]::after {
+        content: " (https://blendingenginek.github.io)";
+        color: var(--text-dark);
+        font-size: 0.9em;
+        font-weight: bold;
     }
 
-    .katana-item-cv {
-        width: 120px; /* Reducido */
-        height: 45px; /* Reducido */
-    }
-    .language-level-cv {
-        font-size: 0.8em; /* Reducido */
+    .language-banner {
+        padding: 0.2cm;
     }
 }
 
