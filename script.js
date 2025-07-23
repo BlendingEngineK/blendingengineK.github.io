@@ -62,18 +62,219 @@ const particlesLightConfig = {
   retina_detect: true
 };
 
+// --- Traducciones ---
+const translations = {
+  es: {
+    pageTitle: "Forjador de mundos. Guerrero del detalle.",
+    logoText: " Forjador de mundos. Guerrero del detalle. ",
+    navProjects: "🚀 Proyectos Destacados",
+    navEducation: "🎓 Educación",
+    navSkills: "🛠️ Competencias Digitales",
+    navLanguages: "📖 Idiomas",
+    heroSubtitle: "Donde termina el código, nace la leyenda.",
+    heroLocation: "📍 España",
+    aboutTitle: "Sobre mí: Gabriel Huerta",
+    aboutP1: "Mi viaje como diseñador de videojuegos nace de una profunda pasión por las historias que nos hacen sentir vivos. Experiencias como las de la saga <em>Souls</em> no solo me enseñaron sobre la superación y la resiliencia, sino que encendieron en mí el deseo de construir mundos que ofrezcan ese mismo nivel de desafío y emoción. Mi objetivo es dar vida a esos mundos que he visualizado, creando refugios e historias que permitan a otros jugadores desconectar y vivir sus propias aventuras.",
+    aboutP2: "Mi identidad profesional, <strong>Blending EngineK</strong>, es un reflejo de mi enfoque técnico y creativo. 'Blending' por mi destreza en <strong>Blender</strong> para el modelado 3D, y 'Engine' por mi especialización en <strong>Unreal Engine</strong> para la construcción de entornos interactivos. La 'K' es un guiño a mis influencias, desde la estética samurái a la mitología nórdica, que inspiran mi búsqueda de un estilo realista y de alta calidad.",
+    aboutP3: "Aunque mi foco está en el realismo y en exprimir el potencial de Unreal, también cuento con experiencia práctica en <strong>Unity</strong>, motor con el que he desarrollado tres juegos, lo que me ha dado una base sólida y versátil en el desarrollo. Busco la oportunidad de unirme a un equipo donde pueda aportar mi visión como 'Forjador de mundos' y mi habilidad como 'Guerrero del detalle', para crear no solo videojuegos, sino leyendas.",
+    projectsTitle: "Proyectos Destacados",
+    roleLabel: "Rol:",
+    engineLabel: "Motor:",
+    dateLabel: "Fecha:",
+    teamLabel: "Equipo:",
+    studioLabel: "Estudio:",
+    cyberRunnerRole: " Desarrollador Solitario",
+    cyberRunnerResp1: "🔹 Desarrollo completo del prototipo y mecánicas de juego.",
+    cyberRunnerResp2: "🔹 Integración de assets de alta calidad de Quixel Megascans para crear un entorno visualmente rico.",
+    cyberRunnerResp3: "🔹 Creación de efectos visuales (VFX) avanzados con el sistema Niagara.",
+    cyberRunnerResp4: "🔹 Implementación y personalización de personajes realistas utilizando MetaHuman.",
+    endlessSeasonResp1: "🔹 Diseño e implementación de una interfaz de usuario (UI) compleja y atractiva.",
+    endlessSeasonResp2: "🔹 Programación de paneles de menú interactivos que cambiaban dinámicamente según la estación del año en el juego.",
+    endlessSeasonResp3: "🔹 Mi primera experiencia sólida en un proyecto de equipo con Unity.",
+    experimentIARole: " Programador de Gameplay y IA",
+    experimentIATeam: " Colaboración en Equipo",
+    experimentIAResp1: "🔹 Desarrollo de las mecánicas principales para un FPS de estilo 2.5D Pixel Art.",
+    experimentIAResp2: "🔹 Programación del comportamiento y la inteligencia artificial (IA) de múltiples tipos de enemigos.",
+    experimentIAResp3: "🔹 Diseño e implementación de un jefe final con distintas fases y habilidades de invocación de enemigos.",
+    ohMyGodsRole: " Programador de Sistemas y Economía",
+    ohMyGodsStudio: " Bug & Play Studio (no oficial)",
+    ohMyGodsDate: " Actual",
+    ohMyGodsResp1: "🔹 Diseño y desarrollo de un sistema Gacha complejo, inspirado en referentes como *AFK Arena* y *Genshin Impact*.",
+    ohMyGodsResp2: "🔹 Implementación de sistema de \"pity\" y banners de temporada para la obtención de personajes.",
+    ohMyGodsResp3: "🔹 Creación de la economía del juego, gestionando monedas de pago y gratuitas.",
+    ohMyGodsResp4: "🔹 Programación del inventario del jugador, la tienda in-game y los sistemas de progresión de personajes (niveles y estrellas).",
+    educationTitle: "Educación",
+    degreeTitle: "🎓 Animación 3D, Juegos y Entornos Interactivos (Grado Superior)",
+    institutionLabel: "🏢 Centro de estudios:",
+    skillsTitle: "Competencias Digitales",
+    unrealCardTitle: "Unreal Engine",
+    unrealCardDesc: "Experiencia en desarrollo de videojuegos y entornos interactivos.",
+    invokeButton: "Invocar",
+    unityCardTitle: "Unity",
+    unityCardDesc: "Desarrollo de juegos 2D/3D, UI y sistemas de juego.",
+    cppCardDesc: "Programación de bajo nivel y optimización para motores de juego.",
+    cppCardDetail1: "POO",
+    cppCardDetail2: "Estructuras de Datos",
+    cppCardDetail3: "Algoritmos",
+    csharpCardDesc: "Lenguaje principal para scripting en Unity y desarrollo de lógica de juego.",
+    csharpCardDetail2: "Eventos y Delegados",
+    csharpCardDetail3: "Corrutinas",
+    blueprintsCardTitle: "Blueprints",
+    blueprintsCardDesc: "Programación visual para prototipado rápido y lógica de juego en Unreal Engine.",
+    blueprintsCardDetail1: "Lógica de Gameplay",
+    blueprintsCardDetail2: "Interfaces",
+    blueprintsCardDetail3: "Macros",
+    pythonCardDesc: "Scripting, automatización y herramientas para desarrollo de juegos.",
+    pythonCardDetail1: "Automatización",
+    pythonCardDetail2: "Análisis de Datos",
+    pythonCardDetail3: "Herramientas de Pipeline",
+    mechanicsCardTitle: "Diseño de Mecánicas",
+    mechanicsCardDesc: "Creación de reglas y sistemas de juego atractivos y equilibrados.",
+    mechanicsCardDetail1: "Prototipado",
+    mechanicsCardDetail2: "Balanceo",
+    mechanicsCardDetail3: "Iteración",
+    gameplayCardTitle: "Programación de Gameplay",
+    gameplayCardDesc: "Implementación de la lógica central y la interactividad del juego.",
+    gameplayCardDetail1: "Control de Personajes",
+    gameplayCardDetail2: "Sistemas de Combate",
+    gameplayCardDetail3: "IA de Enemigos",
+    systemsCardTitle: "Diseño de Sistemas",
+    systemsCardDesc: "Conceptualización y estructuración de la economía, progresión y otros sistemas.",
+    systemsCardDetail1: "Economía del Juego",
+    systemsCardDetail2: "Progresión",
+    blenderCardDesc: "Modelado 3D, texturizado, rigging y animación para assets de juego.",
+    blenderCardDetail1: "Modelado Hard Surface",
+    blenderCardDetail2: "Esculpido",
+    blenderCardDetail3: "Renderizado",
+    kritaCardDesc: "Creación de arte 2D, texturas y concept art para videojuegos.",
+    kritaCardDetail1: "Pintura Digital",
+    kritaCardDetail2: "Concept Art",
+    kritaCardDetail3: "Texturizado",
+    gitCardDesc: "Control de versiones para colaboración en equipos de desarrollo.",
+    gitCardDetail1: "Repositorios",
+    gitCardDetail2: "Ramas",
+    gitCardDetail3: "Merge/Rebase",
+    teamsCardDesc: "Herramienta de comunicación y colaboración para equipos de trabajo.",
+    teamsCardDetail1: "Comunicación",
+    teamsCardDetail2: "Gestión de Proyectos",
+    teamsCardDetail3: "Reuniones",
+    aiCardTitle: "Herramientas de IA",
+    aiCardDesc: "Dominio de herramientas de IA generativa para arte, texto y desarrollo.",
+    languagesTitle: "Elige tu Filo",
+    nativeLang: "Nativo",
+    languageQuote: "El lenguaje es la hoja del entendimiento."
+  },
+  en: {
+    pageTitle: "World Forger. Detail Warrior.",
+    logoText: " World Forger. Detail Warrior. ",
+    navProjects: "🚀 Featured Projects",
+    navEducation: "🎓 Education",
+    navSkills: "🛠️ Digital Skills",
+    navLanguages: "📖 Languages",
+    heroSubtitle: "Where the code ends, the legend begins.",
+    heroLocation: "📍 Spain",
+    aboutTitle: "About Me: Gabriel Huerta",
+    aboutP1: "My journey as a game designer stems from a deep passion for stories that make us feel alive. Experiences like those in the <em>Souls</em> series not only taught me about perseverance and resilience but also ignited in me the desire to build worlds that offer the same level of challenge and excitement. My goal is to bring to life the worlds I have envisioned, creating refuges and stories that allow other players to disconnect and live their own adventures.",
+    aboutP2: "My professional identity, <strong>Blending EngineK</strong>, reflects my technical and creative approach. 'Blending' for my skill in <strong>Blender</strong> for 3D modeling, and 'Engine' for my specialization in <strong>Unreal Engine</strong> for building interactive environments. The 'K' is a nod to my influences, from samurai aesthetics to Norse mythology, which inspire my pursuit of a realistic, high-quality style.",
+    aboutP3: "Although my focus is on realism and pushing Unreal's potential, I also have practical experience with <strong>Unity</strong>, the engine with which I have developed three games, giving me a solid and versatile foundation in development. I am looking for an opportunity to join a team where I can contribute my vision as a 'World Forger' and my skill as a 'Detail Warrior' to create not just video games, but legends.",
+    projectsTitle: "Featured Projects",
+    roleLabel: "Role:",
+    engineLabel: "Engine:",
+    dateLabel: "Date:",
+    teamLabel: "Team:",
+    studioLabel: "Studio:",
+    cyberRunnerRole: " Solo Developer",
+    cyberRunnerResp1: "🔹 Full prototype and game mechanics development.",
+    cyberRunnerResp2: "🔹 Integration of high-quality assets from Quixel Megascans to create a visually rich environment.",
+    cyberRunnerResp3: "🔹 Creation of advanced visual effects (VFX) with the Niagara system.",
+    cyberRunnerResp4: "🔹 Implementation and customization of realistic characters using MetaHuman.",
+    endlessSeasonResp1: "🔹 Design and implementation of a complex and engaging user interface (UI).",
+    endlessSeasonResp2: "🔹 Programming of interactive menu panels that dynamically changed based on the in-game season.",
+    endlessSeasonResp3: "🔹 My first solid experience in a team project with Unity.",
+    experimentIARole: " Gameplay & AI Programmer",
+    experimentIATeam: " Team Collaboration",
+    experimentIAResp1: "🔹 Development of the main mechanics for a 2.5D Pixel Art style FPS.",
+    experimentIAResp2: "🔹 Programming the behavior and artificial intelligence (AI) of multiple enemy types.",
+    experimentIAResp3: "🔹 Design and implementation of a final boss with different phases and enemy summoning abilities.",
+    ohMyGodsRole: " Systems & Economy Programmer",
+    ohMyGodsStudio: " Bug & Play Studio (unofficial)",
+    ohMyGodsDate: " Present",
+    ohMyGodsResp1: "🔹 Design and development of a complex Gacha system, inspired by references like *AFK Arena* and *Genshin Impact*.",
+    ohMyGodsResp2: "🔹 Implementation of a \"pity\" system and seasonal banners for character acquisition.",
+    ohMyGodsResp3: "🔹 Creation of the in-game economy, managing premium and free currencies.",
+    ohMyGodsResp4: "🔹 Programming of the player inventory, in-game store, and character progression systems (levels and stars).",
+    educationTitle: "Education",
+    degreeTitle: "🎓 Higher Degree in 3D Animation, Games and Interactive Environments",
+    institutionLabel: "🏢 Institution:",
+    skillsTitle: "Digital Skills",
+    unrealCardTitle: "Unreal Engine",
+    unrealCardDesc: "Experience in video game development and interactive environments.",
+    invokeButton: "Invoke",
+    unityCardTitle: "Unity",
+    unityCardDesc: "Development of 2D/3D games, UI, and game systems.",
+    cppCardDesc: "Low-level programming and optimization for game engines.",
+    cppCardDetail1: "OOP",
+    cppCardDetail2: "Data Structures",
+    cppCardDetail3: "Algorithms",
+    csharpCardDesc: "Main language for scripting in Unity and game logic development.",
+    csharpCardDetail2: "Events and Delegates",
+    csharpCardDetail3: "Coroutines",
+    blueprintsCardTitle: "Blueprints",
+    blueprintsCardDesc: "Visual programming for rapid prototyping and game logic in Unreal Engine.",
+    blueprintsCardDetail1: "Gameplay Logic",
+    blueprintsCardDetail2: "Interfaces",
+    blueprintsCardDetail3: "Macros",
+    pythonCardDesc: "Scripting, automation, and tools for game development.",
+    pythonCardDetail1: "Automation",
+    pythonCardDetail2: "Data Analysis",
+    pythonCardDetail3: "Pipeline Tools",
+    mechanicsCardTitle: "Game Mechanics Design",
+    mechanicsCardDesc: "Creation of engaging and balanced game rules and systems.",
+    mechanicsCardDetail1: "Prototyping",
+    mechanicsCardDetail2: "Balancing",
+    mechanicsCardDetail3: "Iteration",
+    gameplayCardTitle: "Gameplay Programming",
+    gameplayCardDesc: "Implementation of the core logic and interactivity of the game.",
+    gameplayCardDetail1: "Character Control",
+    gameplayCardDetail2: "Combat Systems",
+    gameplayCardDetail3: "Enemy AI",
+    systemsCardTitle: "Game Systems Design",
+    systemsCardDesc: "Conceptualization and structuring of the economy, progression, and other systems.",
+    systemsCardDetail1: "Game Economy",
+    systemsCardDetail2: "Progression",
+    blenderCardDesc: "3D modeling, texturing, rigging, and animation for game assets.",
+    blenderCardDetail1: "Hard Surface Modeling",
+    blenderCardDetail2: "Sculpting",
+    blenderCardDetail3: "Rendering",
+    kritaCardDesc: "Creation of 2D art, textures, and concept art for video games.",
+    kritaCardDetail1: "Digital Painting",
+    kritaCardDetail2: "Concept Art",
+    kritaCardDetail3: "Texturing",
+    gitCardDesc: "Version control for collaboration in development teams.",
+    gitCardDetail1: "Repositories",
+    gitCard2: "Branches",
+    gitCardDetail3: "Merge/Rebase",
+    teamsCardDesc: "Communication and collaboration tool for work teams.",
+    teamsCardDetail1: "Communication",
+    teamsCardDetail2: "Project Management",
+    teamsCardDetail3: "Meetings",
+    aiCardTitle: "AI Tools",
+    aiCardDesc: "Proficiency in generative AI tools for art, text, and development.",
+    languagesTitle: "Choose Your Blade",
+    nativeLang: "Native",
+    languageQuote: "Language is the blade of understanding."
+  }
+};
+
 // --- Funciones ---
 function playSound(sound) {
   if (isAudioEnabled) {
-    // Pausar todos los demás sonidos cortos inmediatamente
     soundEffects.forEach(effect => {
-      if (effect !== sound) { // No pausar el sonido que estamos a punto de reproducir
+      if (effect !== sound) {
         effect.pause();
         effect.currentTime = 0;
       }
     });
-
-    // Siempre reproducir el sonido solicitado
     sound.currentTime = 0;
     sound.play().catch(error => {
         console.error("Error playing sound:", sound.src, error);
@@ -82,7 +283,10 @@ function playSound(sound) {
 }
 
 function loadParticles(config) {
-  console.log('loadParticles called with config:', config);
+  if (typeof particlesJS === 'undefined') {
+    console.error('particles.js is not loaded yet.');
+    return;
+  }
   if (window.pJSDom && window.pJSDom.length > 0) {
     window.pJSDom[0].pJS.fn.vendors.destroypJS();
     window.pJSDom = [];
@@ -90,103 +294,127 @@ function loadParticles(config) {
   particlesJS('particles-js', config);
 }
 
+function setLanguage(lang) {
+  document.documentElement.lang = lang;
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(el => {
+    const key = el.dataset.translate;
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-flag').forEach(flag => {
+    flag.classList.remove('active');
+    if (flag.dataset.lang === lang) {
+      flag.classList.add('active');
+    }
+  });
+}
 
 // --- Eventos ---
-document.querySelectorAll('a, button').forEach(element => {
-  element.addEventListener('mouseover', () => playSound(hoverSound));
-  element.addEventListener('click', () => {
-    if (document.body.classList.contains('light-mode')) {
-      playSound(clickSoundLight);
-    } else {
-      playSound(clickSound);
-    }
-  });
-});
-
-const audioToggle = document.getElementById('audio-toggle');
-if (audioToggle) {
-  audioToggle.addEventListener('click', () => {
-    isAudioEnabled = !isAudioEnabled;
-    if (isAudioEnabled) {
-      audioToggle.textContent = "🔊";
-      if (document.body.classList.contains('light-mode')) {
-        backgroundMusicLight.play();
-        bonfireSoundLight.play();
-      } else {
-        backgroundMusic.play();
-        bonfireSound.play();
-      }
-    }
-    else {
-      audioToggle.textContent = "🔇";
-      backgroundMusic.pause();
-      backgroundMusicLight.pause();
-      bonfireSound.pause();
-      bonfireSoundLight.pause();
-    }
-  });
-}
-
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-  themeToggle.addEventListener('click', function() {
-    document.body.classList.toggle('light-mode');
-
-    if (document.body.classList.contains('light-mode')) {
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      const snowflakeImages = ['images/snowflake.png', 'images/snowflake2.png', 'images/snowflake3.png'];
-      const randomIndex = Math.floor(Math.random() * snowflakeImages.length);
-      const currentParticlesLightConfig = JSON.parse(JSON.stringify(particlesLightConfig)); // Deep copy
-      currentParticlesLightConfig.particles.shape.image.src = snowflakeImages[randomIndex];
-      loadParticles(currentParticlesLightConfig);
-      backgroundMusic.pause();
-      bonfireSound.pause();
-      if (isAudioEnabled) {
-        backgroundMusicLight.play();
-        bonfireSoundLight.play();
-      }
-    } else {
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      loadParticles(particlesDarkConfig);
-      backgroundMusicLight.pause();
-      bonfireSoundLight.pause();
-      if (isAudioEnabled) {
-        backgroundMusic.play();
-        bonfireSound.play();
-      }
-    }
-  });
-}
-
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Comprobar el tema actual y cargar las partículas correspondientes
+  
+  // --- Initial Setup ---
+  setLanguage('es');
   if (document.body.classList.contains('light-mode')) {
     loadParticles(particlesLightConfig);
   } else {
     loadParticles(particlesDarkConfig);
   }
 
-  // Iniciar música en la primera interacción del usuario
+  // --- First Interaction Audio ---
   document.body.addEventListener('click', () => {
     if (isAudioEnabled) {
       if (document.body.classList.contains('light-mode')) {
-        backgroundMusicLight.play();
-        bonfireSoundLight.play();
+        backgroundMusicLight.play().catch(e => console.error("Audio play failed", e));
+        bonfireSoundLight.play().catch(e => console.error("Audio play failed", e));
       } else {
-        backgroundMusic.play();
-        bonfireSound.play();
+        backgroundMusic.play().catch(e => console.error("Audio play failed", e));
+        bonfireSound.play().catch(e => console.error("Audio play failed", e));
       }
     }
   }, { once: true });
 
-  // Video Pop-up functionality
+  // --- Sound and UI Listeners ---
+  document.querySelectorAll('a, button, .lang-flag').forEach(element => {
+    element.addEventListener('mouseover', () => playSound(hoverSound));
+    element.addEventListener('click', () => {
+      if (document.body.classList.contains('light-mode')) {
+        playSound(clickSoundLight);
+      } else {
+        playSound(clickSound);
+      }
+    });
+  });
+
+  const audioToggle = document.getElementById('audio-toggle');
+  if (audioToggle) {
+    audioToggle.addEventListener('click', () => {
+      isAudioEnabled = !isAudioEnabled;
+      audioToggle.querySelector('i').className = isAudioEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+      if (isAudioEnabled) {
+        if (document.body.classList.contains('light-mode')) {
+          backgroundMusicLight.play();
+          bonfireSoundLight.play();
+        } else {
+          backgroundMusic.play();
+          bonfireSound.play();
+        }
+      } else {
+        backgroundMusic.pause();
+        backgroundMusicLight.pause();
+        bonfireSound.pause();
+        bonfireSoundLight.pause();
+      }
+    });
+  }
+
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+
+      themeToggle.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+      
+      if (isLight) {
+        const snowflakeImages = ['images/snowflake.png', 'images/snowflake2.png', 'images/snowflake3.png'];
+        const randomIndex = Math.floor(Math.random() * snowflakeImages.length);
+        const currentParticlesLightConfig = JSON.parse(JSON.stringify(particlesLightConfig));
+        currentParticlesLightConfig.particles.shape.image.src = snowflakeImages[randomIndex];
+        loadParticles(currentParticlesLightConfig);
+        backgroundMusic.pause();
+        bonfireSound.pause();
+        if (isAudioEnabled) {
+          backgroundMusicLight.play();
+          bonfireSoundLight.play();
+        }
+      } else {
+        loadParticles(particlesDarkConfig);
+        backgroundMusicLight.pause();
+        bonfireSoundLight.pause();
+        if (isAudioEnabled) {
+          backgroundMusic.play();
+          bonfireSound.play();
+        }
+      }
+    });
+  }
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  // --- Language Selector Events ---
+  document.querySelectorAll('.lang-flag').forEach(flag => {
+    flag.addEventListener('click', (event) => {
+      setLanguage(event.target.dataset.lang);
+    });
+  });
+
+  // --- Video Pop-up ---
   const videoPopup = document.getElementById('video-popup');
   const closeButton = document.querySelector('.video-popup .close-button');
   const projectVideo = document.getElementById('project-video');
@@ -206,37 +434,26 @@ document.addEventListener('DOMContentLoaded', function() {
           if (projectId === 'oh-my-gods') {
             projectVideo.style.display = 'none';
             comingSoonGlitch.style.display = 'flex';
-            // startGlitchAnimation(); // No definida en este scope
           } else {
             projectVideo.style.display = 'block';
             comingSoonGlitch.style.display = 'none';
-            // stopGlitchAnimation(); // No definida en este scope
             let videoFileName;
-            if (projectId === 'cyber-runner') {
-              videoFileName = 'Cyber Runner.mp4';
-            } else if (projectId === 'endless-season') {
-              videoFileName = 'Endless Season.mp4';
-            } else if (projectId === 'experiment-ia') {
-              videoFileName = 'ExperimentIA.mp4';
-            } else if (projectId === 'profile') {
-                videoFileName = 'Perfil.mp4';
-            }
+            if (projectId === 'cyber-runner') videoFileName = 'Cyber Runner.mp4';
+            else if (projectId === 'endless-season') videoFileName = 'Endless Season.mp4';
+            else if (projectId === 'experiment-ia') videoFileName = 'ExperimentIA.mp4';
+            else if (projectId === 'profile') videoFileName = 'Perfil.mp4';
+            
             projectVideo.src = `videos/${videoFileName}`;
-            projectVideo.muted = true; // Asegurar que esté silenciado
-            projectVideo.setAttribute('playsinline', ''); // Asegurar playsinline
-            console.log('Setting video src to:', projectVideo.src);
+            projectVideo.muted = true;
+            projectVideo.setAttribute('playsinline', '');
             projectVideo.load();
-            console.log('Video loaded, attempting to play...');
-            projectVideo.play().catch(error => {
-                console.error('Error playing video:', error);
-            });
+            projectVideo.play().catch(error => console.error('Error playing video:', error));
           }
           videoPopup.classList.add('show');
         });
       }
     });
 
-    // Profile video preview on hover
     const profileImg = document.getElementById('profile-img');
     const profileVideoPreview = document.getElementById('profile-video-preview');
 
@@ -259,7 +476,6 @@ document.addEventListener('DOMContentLoaded', function() {
       videoPopup.classList.remove('show');
       projectVideo.pause();
       projectVideo.currentTime = 0;
-      // stopGlitchAnimation(); // No definida en este scope
     });
 
     videoPopup.addEventListener('click', (event) => {
@@ -267,20 +483,8 @@ document.addEventListener('DOMContentLoaded', function() {
         videoPopup.classList.remove('show');
         projectVideo.pause();
         projectVideo.currentTime = 0;
-        // stopGlitchAnimation(); // No definida en este scope
       }
     });
-  } else {
-    console.error("One or more video popup elements not found.");
-  }
-
-  // Glitch animation for "Próximamente"
-  function startGlitchAnimation() {
-    // No movement logic needed here, CSS will handle glitch and pulse
-  }
-
-  function stopGlitchAnimation() {
-    // No movement logic needed here
   }
 
   // --- Gamification ---
@@ -305,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toastContainer.appendChild(toast);
     setTimeout(() => {
       toast.remove();
-    }, 5000); // El toast desaparece después de 5 segundos
+    }, 5000);
   }
 
   function showFinalAchievement() {
@@ -329,18 +533,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (achievements[sectionId] && !unlockedAchievements.has(sectionId)) {
           unlockedAchievements.add(sectionId);
           createToast(achievements[sectionId]);
-          observer.unobserve(entry.target); // Dejar de observar una vez desbloqueado
+          observer.unobserve(entry.target);
 
           if (unlockedAchievements.size === totalAchievements) {
-            // Esperar un poco antes de mostrar el pop-up final
             setTimeout(showFinalAchievement, 2000);
           }
         }
       }
     });
-  }, { threshold: 0.5 }); // Se activa cuando el 50% de la sección es visible
+  }, { threshold: 0.5 });
 
-  // Observar todas las secciones con logros
   Object.keys(achievements).forEach(id => {
     const section = document.getElementById(id);
     if (section) {
@@ -353,35 +555,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const quoteContainer = document.getElementById('quote-container');
   const quoteTextFinal = document.getElementById('language-quote-text');
 
-  const quotesFinal = {
-    es: 'El lenguaje es la hoja del entendimiento.',
-    en: 'Language is the blade of understanding.'
-  };
-
   if (katanaItemsFinal.length > 0 && quoteContainer && quoteTextFinal) {
     katanaItemsFinal.forEach(item => {
-      if (item) {
-        item.addEventListener('mouseover', () => {
-          playSound(hoverSound);
-        });
-
-        item.addEventListener('click', () => {
-          const lang = item.dataset.lang;
-          
-          quoteTextFinal.textContent = quotesFinal[lang];
-          
-          quoteContainer.classList.add('active');
-          
-          playSound(katanaSlashSound);
-
-          setTimeout(() => {
-            quoteContainer.classList.remove('active');
-          }, 4000); 
-        });
-      }
+      item.addEventListener('mouseover', () => playSound(hoverSound));
+      item.addEventListener('click', () => {
+        const lang = item.dataset.lang;
+        setLanguage(lang);
+        quoteTextFinal.textContent = translations[lang].languageQuote;
+        quoteContainer.classList.add('active');
+        playSound(katanaSlashSound);
+        setTimeout(() => {
+          quoteContainer.classList.remove('active');
+        }, 4000); 
+      });
     });
-  } else {
-    console.error("One or more language section elements not found.");
   }
 
   // --- Interacción de las Cartas de Habilidades ---
@@ -500,7 +687,5 @@ document.addEventListener('DOMContentLoaded', function() {
         invocationPopup.classList.remove('active');
       }
     });
-  } else {
-    console.error("One or more skill card elements not found.");
   }
 });

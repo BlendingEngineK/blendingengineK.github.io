@@ -1932,6 +1932,28 @@ body.light-mode .video-popup-content {
   }
 }
 
+.language-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang-flag {
+  width: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.lang-flag.active {
+  border-color: var(--accent-gold);
+}
+
+body.light-mode .lang-flag.active {
+  border-color: var(--accent-light-mode);
+}
+
 /* Achievement Toast Styles */
 #toast-container {
   position: fixed;
