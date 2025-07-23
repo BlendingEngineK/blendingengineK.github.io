@@ -987,6 +987,69 @@ body.light-mode #language-quote-text {
 
 
 
+/* Estilos para la sección de aportación */
+#aportacion {
+  background-color: var(--bg-dark-header);
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 4rem auto;
+  max-width: 1200px;
+}
+
+body.light-mode #aportacion {
+  background-color: var(--bg-light-header);
+}
+
+.contribution-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.contribution-card {
+  background: var(--bg-dark-hover-alt);
+  padding: 2rem;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+body.light-mode .contribution-card {
+  background: #D9E8E6;
+}
+
+.contribution-card h3 {
+  color: var(--accent-gold);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+body.light-mode .contribution-card h3 {
+  color: var(--accent-light-mode);
+}
+
+.contribution-card ul {
+  list-style: none;
+}
+
+.contribution-card li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-light-alt);
+}
+
+body.light-mode .contribution-card li {
+  color: var(--text-dark);
+}
+
+.contribution-card i {
+  margin-right: 10px;
+}
+
+
 /* Estilos para la sección de competencias digitales */
 #habilidades {
   background-color: var(--bg-dark-header);

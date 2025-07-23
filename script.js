@@ -1,3 +1,4 @@
+console.log("script.js cargado y ejecutándose.");
 // Cargar los sonidos
 const hoverSound = new Audio('Whoosh.flac');
 const clickSound = new Audio('thud.wav');
@@ -75,8 +76,21 @@ const translations = {
     heroLocation: "📍 España",
     aboutTitle: "Sobre mí: Gabriel Huerta",
     aboutP1: "Mi viaje como diseñador de videojuegos nace de una profunda pasión por las historias que nos hacen sentir vivos. Experiencias como las de la saga <em>Souls</em> no solo me enseñaron sobre la superación y la resiliencia, sino que encendieron en mí el deseo de construir mundos que ofrezcan ese mismo nivel de desafío y emoción. Mi objetivo es dar vida a esos mundos que he visualizado, creando refugios e historias que permitan a otros jugadores desconectar y vivir sus propias aventuras.",
-    aboutP2: "Mi identidad profesional, <strong>Blending EngineK</strong>, es un reflejo de mi enfoque técnico y creativo. 'Blending' por mi destreza en <strong>Blender</strong> para el modelado 3D, y 'Engine' por mi especialización en <strong>Unreal Engine</strong> para la construcción de entornos interactivos. La 'K' es un guiño a mis influencias, desde la estética samurái a la mitología nórdica, que inspiran mi búsqueda de un estilo realista y de alta calidad.",
+    aboutP2New: "Mi identidad profesional, <strong>Blending EngineK</strong>, es un reflejo de mi enfoque técnico y creativo. 'Blending' por mi destreza en <strong>Blender</strong> para el modelado 3D, y 'Engine' porque simboliza mi capacidad para ser el motor que impulsa los proyectos, dominando tanto <strong>Unreal Engine</strong> como <strong>Unity</strong>. La 'K' es un guiño a mis influencias, desde la estética samurái a la mitología nórdica, que inspiran mi búsqueda de un estilo realista y de alta calidad.",
     aboutP3: "Aunque mi foco está en el realismo y en exprimir el potencial de Unreal, también cuento con experiencia práctica en <strong>Unity</strong>, motor con el que he desarrollado tres juegos, lo que me ha dado una base sólida y versátil en el desarrollo. Busco la oportunidad de unirme a un equipo donde pueda aportar mi visión como 'Forjador de mundos' y mi habilidad como 'Guerrero del detalle', para crear no solo videojuegos, sino leyendas.",
+    navContribution: "✨ Mi Aportación",
+    contributionTitle: "Lo que Aporto a la Forja",
+    designerTitle: "<i class=\"fas fa-drafting-compass\"></i> Como Diseñador",
+    designerSkill1: "<strong>Visión Creativa y Narrativa:</strong> Convierto ideas en mundos cohesivos y experiencias memorables.",
+    designerSkill2: "<strong>Puente entre Disciplinas:</strong> Facilito la comunicación entre arte y programación para asegurar una visión unificada.",
+    designerSkill3: "<strong>Enfoque en el Jugador:</strong> Diseño mecánicas y sistemas que priorizan la diversión y el desafío.",
+    programmerTitle: "<i class=\"fas fa-code\"></i> Como Programador",
+    programmerSkill1: "<strong>Solidez Técnica y Versatilidad:</strong> Domino la lógica de programación en C++ (Unreal) y C# (Unity).",
+    programmerSkill2: "<strong>Resolución de Problemas:</strong> Descompongo desafíos complejos en soluciones eficientes y mantenibles.",
+    programmerSkill3: "<strong>Cultura de Equipo y Colaboración:</strong> Me integro en equipos ágiles, utilizando Git para un desarrollo limpio y colaborativo.",
+    generalTitle: "<i class=\"fas fa-fire\"></i> Generales",
+    generalSkill1: "<strong>Pasión y Compromiso:</strong> Mi trabajo es mi vocación, por lo que mi dedicación va más allá de un horario.",
+    generalSkill2: "<strong>Amante de las Mecánicas:</strong> Disfruto diseñando y programando sistemas de juego que sean innovadores y divertidos.",
     projectsTitle: "Proyectos Destacados",
     roleLabel: "Rol:",
     engineLabel: "Motor:",
@@ -175,7 +189,7 @@ const translations = {
     heroLocation: "📍 Spain",
     aboutTitle: "About Me: Gabriel Huerta",
     aboutP1: "My journey as a game designer stems from a deep passion for stories that make us feel alive. Experiences like those in the <em>Souls</em> series not only taught me about perseverance and resilience but also ignited in me the desire to build worlds that offer the same level of challenge and excitement. My goal is to bring to life the worlds I have envisioned, creating refuges and stories that allow other players to disconnect and live their own adventures.",
-    aboutP2: "My professional identity, <strong>Blending EngineK</strong>, reflects my technical and creative approach. 'Blending' for my skill in <strong>Blender</strong> for 3D modeling, and 'Engine' for my specialization in <strong>Unreal Engine</strong> for building interactive environments. The 'K' is a nod to my influences, from samurai aesthetics to Norse mythology, which inspire my pursuit of a realistic, high-quality style.",
+    aboutP2New: "My professional identity, <strong>Blending EngineK</strong>, reflects my technical and creative approach. 'Blending' for my skill in <strong>Blender</strong> for 3D modeling, and 'Engine' because it symbolizes my ability to be the engine that drives projects, mastering both <strong>Unreal Engine</strong> and <strong>Unity</strong>. The 'K' is a nod to my influences, from samurai aesthetics to Norse mythology, which inspire my pursuit of a realistic, high-quality style.",
     aboutP3: "Although my focus is on realism and pushing Unreal's potential, I also have practical experience with <strong>Unity</strong>, the engine with which I have developed three games, giving me a solid and versatile foundation in development. I am looking for an opportunity to join a team where I can contribute my vision as a 'World Forger' and my skill as a 'Detail Warrior' to create not just video games, but legends.",
     projectsTitle: "Featured Projects",
     roleLabel: "Role:",
@@ -242,17 +256,17 @@ const translations = {
     systemsCardDesc: "Conceptualization and structuring of the economy, progression, and other systems.",
     systemsCardDetail1: "Game Economy",
     systemsCardDetail2: "Progression",
-    blenderCardDesc: "3D modeling, texturing, rigging, and animation for game assets.",
+    blenderCardDesc: "3D modeling, texturizado, rigging and animation for game assets.",
     blenderCardDetail1: "Hard Surface Modeling",
-    blenderCardDetail2: "Sculpting",
-    blenderCardDetail3: "Rendering",
+    blenderCardDetail2: "Esculpido",
+    blenderCardDetail3: "Renderizado",
     kritaCardDesc: "Creation of 2D art, textures, and concept art for video games.",
     kritaCardDetail1: "Digital Painting",
     kritaCardDetail2: "Concept Art",
-    kritaCardDetail3: "Texturing",
+    kritaCardDetail3: "Texturizado",
     gitCardDesc: "Version control for collaboration in development teams.",
     gitCardDetail1: "Repositories",
-    gitCard2: "Branches",
+    gitCardDetail2: "Branches",
     gitCardDetail3: "Merge/Rebase",
     teamsCardDesc: "Communication and collaboration tool for work teams.",
     teamsCardDetail1: "Communication",
@@ -261,7 +275,7 @@ const translations = {
     aiCardTitle: "AI Tools",
     aiCardDesc: "Proficiency in generative AI tools for art, text, and development.",
     languagesTitle: "Choose Your Blade",
-    nativeLang: "Native",
+    nativeLang: "Nativo",
     languageQuote: "Language is the blade of understanding."
   }
 };
@@ -316,11 +330,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // --- Initial Setup ---
   setLanguage('es');
-  if (document.body.classList.contains('light-mode')) {
-    loadParticles(particlesLightConfig);
-  } else {
-    loadParticles(particlesDarkConfig);
-  }
+  setTimeout(() => {
+    if (document.body.classList.contains('light-mode')) {
+      loadParticles(particlesLightConfig);
+    } else {
+      loadParticles(particlesDarkConfig);
+    }
+  }, 100); // Pequeño retraso para asegurar que particles.js esté cargado
 
   // --- First Interaction Audio ---
   document.body.addEventListener('click', () => {
