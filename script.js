@@ -275,7 +275,7 @@ const translations = {
     aiCardTitle: "AI Tools",
     aiCardDesc: "Proficiency in generative AI tools for art, text, and development.",
     languagesTitle: "Choose Your Blade",
-    nativeLang: "Nativo",
+    nativeLang: "Native",
     languageQuote: "Language is the blade of understanding."
   }
 };
