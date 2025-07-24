@@ -67,7 +67,7 @@ const particlesLightConfig = {
 const translations = {
   es: {
     pageTitle: "Forjador de mundos. Guerrero del detalle.",
-    logoText: " Forjador de mundos. Guerrero del detalle. ",
+    logoText: "Forjador de mundos. Guerrero del detalle.",
     navProjects: "🚀 Proyectos Destacados",
     navEducation: "🎓 Educación",
     navSkills: "🛠️ Competencias Digitales",
@@ -80,15 +80,15 @@ const translations = {
     aboutP3: "Aunque mi foco está en el realismo y en exprimir el potencial de Unreal, también cuento con experiencia práctica en <strong>Unity</strong>, motor con el que he desarrollado tres juegos, lo que me ha dado una base sólida y versátil en el desarrollo. Busco la oportunidad de unirme a un equipo donde pueda aportar mi visión como 'Forjador de mundos' y mi habilidad como 'Guerrero del detalle', para crear no solo videojuegos, sino leyendas.",
     navContribution: "✨ Mi Aportación",
     contributionTitle: "Lo que Aporto a la Forja",
-    designerTitle: "<i class=\"fas fa-drafting-compass\"></i> Como Diseñador",
+    designerTitle: "Como Diseñador",
     designerSkill1: "<strong>Visión Creativa y Narrativa:</strong> Convierto ideas en mundos cohesivos y experiencias memorables.",
     designerSkill2: "<strong>Puente entre Disciplinas:</strong> Facilito la comunicación entre arte y programación para asegurar una visión unificada.",
     designerSkill3: "<strong>Enfoque en el Jugador:</strong> Diseño mecánicas y sistemas que priorizan la diversión y el desafío.",
-    programmerTitle: "<i class=\"fas fa-code\"></i> Como Programador",
+    programmerTitle: "Como Programador",
     programmerSkill1: "<strong>Solidez Técnica y Versatilidad:</strong> Domino la lógica de programación en C++ (Unreal) y C# (Unity).",
     programmerSkill2: "<strong>Resolución de Problemas:</strong> Descompongo desafíos complejos en soluciones eficientes y mantenibles.",
     programmerSkill3: "<strong>Cultura de Equipo y Colaboración:</strong> Me integro en equipos ágiles, utilizando Git para un desarrollo limpio y colaborativo.",
-    generalTitle: "<i class=\"fas fa-fire\"></i> Generales",
+    generalTitle: "Generales",
     generalSkill1: "<strong>Pasión y Compromiso:</strong> Mi trabajo es mi vocación, por lo que mi dedicación va más allá de un horario.",
     generalSkill2: "<strong>Amante de las Mecánicas:</strong> Disfruto diseñando y programando sistemas de juego que sean innovadores y divertidos.",
     projectsTitle: "Proyectos Destacados",
@@ -180,7 +180,7 @@ const translations = {
   },
   en: {
     pageTitle: "World Forger. Detail Warrior.",
-    logoText: " World Forger. Detail Warrior. ",
+    logoText: "World Forger. Detail Warrior.",
     navProjects: "🚀 Featured Projects",
     navEducation: "🎓 Education",
     navSkills: "🛠️ Digital Skills",
@@ -191,6 +191,19 @@ const translations = {
     aboutP1: "My journey as a game designer stems from a deep passion for stories that make us feel alive. Experiences like those in the <em>Souls</em> series not only taught me about perseverance and resilience but also ignited in me the desire to build worlds that offer the same level of challenge and excitement. My goal is to bring to life the worlds I have envisioned, creating refuges and stories that allow other players to disconnect and live their own adventures.",
     aboutP2New: "My professional identity, <strong>Blending EngineK</strong>, reflects my technical and creative approach. 'Blending' for my skill in <strong>Blender</strong> for 3D modeling, and 'Engine' because it symbolizes my ability to be the engine that drives projects, mastering both <strong>Unreal Engine</strong> and <strong>Unity</strong>. The 'K' is a nod to my influences, from samurai aesthetics to Norse mythology, which inspire my pursuit of a realistic, high-quality style.",
     aboutP3: "Although my focus is on realism and pushing Unreal's potential, I also have practical experience with <strong>Unity</strong>, the engine with which I have developed three games, giving me a solid and versatile foundation in development. I am looking for an opportunity to join a team where I can contribute my vision as a 'World Forger' and my skill as a 'Detail Warrior' to create not just video games, but legends.",
+    navContribution: "✨ What I Bring to the Forge",
+    contributionTitle: "What I Bring to the Forge",
+    designerTitle: "As a Designer",
+    designerSkill1: "<strong>Creative and Narrative Vision:</strong> I transform ideas into cohesive worlds and memorable experiences.",
+    designerSkill2: "<strong>Bridge between Disciplines:</strong> I facilitate communication between art and programming to ensure a unified vision.",
+    designerSkill3: "<strong>Player-Centric Approach:</strong> I design mechanics and systems that prioritize fun and challenge.",
+    programmerTitle: "As a Programmer",
+    programmerSkill1: "<strong>Technical Robustness and Versatility:</strong> I master programming logic in C++ (Unreal) and C# (Unity).",
+    programmerSkill2: "<strong>Problem Solving:</strong> I break down complex challenges into efficient and maintainable solutions.",
+    programmerSkill3: "<strong>Team Culture and Collaboration:</strong> I integrate into agile teams, using Git for clean and collaborative development.",
+    generalTitle: "General Skills",
+    generalSkill1: "<strong>Passion and Commitment:</strong> My work is my vocation, so my dedication goes beyond a schedule.",
+    generalSkill2: "<strong>Mechanics Lover:</strong> I enjoy designing and programming game systems that are innovative and fun.",
     projectsTitle: "Featured Projects",
     roleLabel: "Role:",
     engineLabel: "Engine:",
@@ -314,7 +327,11 @@ function setLanguage(lang) {
   elements.forEach(el => {
     const key = el.dataset.translate;
     if (translations[lang] && translations[lang][key]) {
-      el.innerHTML = translations[lang][key];
+      if (key === 'pageTitle') {
+        document.title = translations[lang][key];
+      } else {
+        el.innerHTML = translations[lang][key];
+      }
     }
   });
   document.querySelectorAll('.lang-flag').forEach(flag => {
