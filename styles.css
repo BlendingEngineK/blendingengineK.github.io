@@ -433,6 +433,28 @@ body.light-mode .info a {
 
 body.light-mode .info a:hover {
   color: var(--accent-light-mode);
+  text-shadow: 0 0 8px var(--accent-light-mode);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 10px;
+  border: 3px solid var(--bg-dark);
+}
+
+body.light-mode ::-webkit-scrollbar {
+  background-color: var(--bg-light);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: var(--accent-light-mode);
+  border-color: var(--bg-light);
 }
 
 /* Animación de hover para los enlaces del nav */

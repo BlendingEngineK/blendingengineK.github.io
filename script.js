@@ -176,7 +176,17 @@ const translations = {
     aiCardDesc: "Dominio de herramientas de IA generativa para arte, texto y desarrollo.",
     languagesTitle: "Elige tu Filo",
     nativeLang: "Nativo",
-    languageQuote: "El lenguaje es la hoja del entendimiento."
+    languageQuote: "El lenguaje es la hoja del entendimiento.",
+    achievementUnlocked: "Logro Desbloqueado",
+    achievement_sobre_mi: "Mundo Descubierto: Has iniciado tu viaje.",
+    achievement_aportacion: "Forja Desbloqueada: Has descubierto lo que aporto.",
+    achievement_experiencia: "Forjador de Leyendas: Has visto los proyectos destacados.",
+    achievement_educacion: "Maestro del Conocimiento: Has consultado la formación.",
+    achievement_habilidades: "Arsenal Desbloqueado: Has inspeccionado las competencias.",
+    achievement_idiomas: "Políglota: Has comprobado los idiomas dominados.",
+    finalAchievementTitle: "¡Has conocido a Blending EngineK!",
+    finalAchievementP1: "Gracias por explorar mi mundo. Ahora sabes de lo que soy capaz. ¿Forjamos juntos la próxima leyenda?",
+    finalAchievementP2: "Contáctame en: <a href=\"mailto:blending.enginek@gmail.com\">blending.enginek@gmail.com</a>"
   },
   en: {
     pageTitle: "World Forger. Detail Warrior.",
@@ -288,8 +298,18 @@ const translations = {
     aiCardTitle: "AI Tools",
     aiCardDesc: "Proficiency in generative AI tools for art, text, and development.",
     languagesTitle: "Choose Your Blade",
-    nativeLang: "Nativo",
-    languageQuote: "Language is the blade of understanding."
+    nativeLang: "Native",
+    languageQuote: "Language is the blade of understanding.",
+    achievementUnlocked: "Achievement Unlocked",
+    achievement_sobre_mi: "World Discovered: You have started your journey.",
+    achievement_aportacion: "Forge Unlocked: You have discovered what I bring to the forge.",
+    achievement_experiencia: "Legend Forger: You have seen the featured projects.",
+    achievement_educacion: "Master of Knowledge: You have consulted the education.",
+    achievement_habilidades: "Arsenal Unlocked: You have inspected the skills.",
+    achievement_idiomas: "Polyglot: You have checked the dominated languages.",
+    finalAchievementTitle: "You have met Blending EngineK!",
+    finalAchievementP1: "Thank you for exploring my world. Now you know what I am capable of. Shall we forge the next legend together?",
+    finalAchievementP2: "Contact me at: <a href=\"mailto:blending.enginek@gmail.com\">blending.enginek@gmail.com</a>"
   }
 };
 
@@ -522,11 +542,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- Gamification ---
   const achievements = {
-    'sobre-mi': 'Mundo Descubierto: Has iniciado tu viaje.',
-    'experiencia': 'Forjador de Leyendas: Has visto los proyectos destacados.',
-    'educacion': 'Maestro del Conocimiento: Has consultado la formación.',
-    'habilidades': 'Arsenal Desbloqueado: Has inspeccionado las competencias.',
-    'idiomas': 'Políglota: Has comprobado los idiomas dominados.'
+    'sobre-mi': 'achievement_sobre_mi',
+    'aportacion': 'achievement_aportacion',
+    'experiencia': 'achievement_experiencia',
+    'educacion': 'achievement_educacion',
+    'habilidades': 'achievement_habilidades',
+    'idiomas': 'achievement_idiomas'
   };
 
   const unlockedAchievements = new Set();
@@ -535,10 +556,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const achievementPopup = document.getElementById('achievement-popup');
   const achievementPopupClose = achievementPopup.querySelector('.close-button');
 
-  function createToast(message) {
+  function createToast(messageKey) {
+    const lang = document.documentElement.lang;
+    const message = translations[lang][messageKey] || messageKey;
+    const unlockedMessage = translations[lang]['achievementUnlocked'] || 'Logro Desbloqueado';
+
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `🏆 ${message}`;
+    toast.innerHTML = `🏆 ${unlockedMessage}: ${message}`;
     toastContainer.appendChild(toast);
     setTimeout(() => {
       toast.remove();
